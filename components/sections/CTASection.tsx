@@ -15,8 +15,8 @@ export default function CTASection({
   description = "Join PSA Tanzania and help us build a safer, more accountable healthcare system for every patient.",
   primaryLabel = "Get Involved",
   primaryHref = "/become-a-volunteer",
-  secondaryLabel = "Learn More",
-  secondaryHref = "/about",
+  secondaryLabel = "",
+  secondaryHref = "",
 }: CTASectionProps) {
   return (
     <section className="bg-sky-blue">
@@ -30,7 +30,9 @@ export default function CTASection({
           </AnimateIn>
           <AnimateIn delay={0.15} className="flex flex-wrap gap-4">
             <Button label={primaryLabel} href={primaryHref} variant="white" />
-            <Button label={secondaryLabel} href={secondaryHref} variant="outlined" className="!border-white !text-white hover:!bg-white hover:!text-sky-blue" />
+            {secondaryLabel && secondaryHref && (
+              <Button label={secondaryLabel} href={secondaryHref} variant="outlined" className="!border-white !text-white hover:!bg-white hover:!text-sky-blue" />
+            )}
           </AnimateIn>
         </div>
       </div>

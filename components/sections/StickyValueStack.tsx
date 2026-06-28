@@ -12,7 +12,7 @@ const values = [
   {
     title: "Dignity & Respect",
     description:
-      "Every patient deserves to be treated with compassion, honesty, and respect — regardless of background, income, or circumstance. We hold the health system accountable to this standard.",
+      "Every patient deserves to be treated with compassion, honesty, and respect, regardless of background, income, or circumstance. We hold the health system accountable to this standard.",
     icon: (
       <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
         <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
@@ -32,7 +32,7 @@ const values = [
   {
     title: "Youth Leadership",
     description:
-      "Young people are not just the future of health advocacy — they are its present. PSA Tanzania is led by youth, for everyone, channelling the energy and creativity of a new generation.",
+      "Young people are not just the future of health advocacy. They are its present. PSA Tanzania is led by youth, for everyone, channelling the energy and creativity of a new generation.",
     icon: (
       <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
         <path d="M12 3L1 9l4 2.18V15c0 3 5 5 7 5s7-2 7-5v-3.82L22 9 12 3zm6 14c0 1.29-2.97 3-6 3s-6-1.71-6-3v-2.73l6 3.27 6-3.27V17z" />

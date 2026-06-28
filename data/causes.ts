@@ -39,7 +39,7 @@ export const causes: Cause[] = [
       "Training healthcare workers, community health volunteers, and patient advocates to build a culture of safety across the health system.",
     image: "https://framerusercontent.com/images/7E3nqiTmmCAKr7Ynna3VJv5tsQs.jpg",
     fullDescription:
-      "Through structured training programs, we build the knowledge and skills of frontline health workers and community volunteers to recognize, report, and respond to safety incidents — creating a culture of continuous improvement.",
+      "Through structured training programs, we build the knowledge and skills of frontline health workers and community volunteers to recognize, report, and respond to safety incidents, creating a culture of continuous improvement.",
   },
   {
     title: "Accountability & Transparency",

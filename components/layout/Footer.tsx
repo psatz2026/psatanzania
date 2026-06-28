@@ -5,14 +5,12 @@ const footerLinks = {
   Organization: [
     { label: "About Us", href: "/about" },
     { label: "Our Programs", href: "/causes" },
-    { label: "Volunteers", href: "/volunteers" },
-    { label: "Gallery", href: "/gallery" },
+    { label: "Our Team", href: "/team" },
+    { label: "FAQs", href: "/faqs" },
   ],
   "Get Involved": [
     { label: "Become a Volunteer", href: "/become-a-volunteer" },
-    { label: "Events", href: "/event" },
-    { label: "Blog", href: "/blog" },
-    { label: "FAQs", href: "/faqs" },
+    { label: "Contact Us", href: "/contact" },
   ],
   Legal: [
     { label: "Privacy Policy", href: "/legal-pages/privacy-policy" },

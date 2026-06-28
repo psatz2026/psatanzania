@@ -8,18 +8,19 @@ const chrome = 'C:/Program Files/Google/Chrome/Application/chrome.exe';
 
 const browser = await puppeteer.launch({ executablePath: chrome, args: ['--no-sandbox'] });
 const page = await browser.newPage();
-await page.setViewport({ width: 1440, height: 900 });
+await page.setViewport({ width: 1440, height: 200 });
 
-const shot = async (name) => page.screenshot({ path: path.join(out, name) });
-const wait = (ms) => new Promise(r => setTimeout(r, ms));
+await page.goto('http://localhost:3000', { waitUntil: 'networkidle0' });
+await new Promise(r => setTimeout(r, 1000));
 
-await page.goto('http://localhost:3000/become-a-volunteer', { waitUntil: 'networkidle0' });
-await wait(1500);
-await shot('volunteer-form.png');
+// Default state
+await page.screenshot({ path: path.join(out, 'nav-default.png') });
 
-await page.goto('http://localhost:3000/contact', { waitUntil: 'networkidle0' });
-await wait(1500);
-await shot('contact-form.png');
+// Hover state
+const btn = await page.$('header a[href="/become-a-volunteer"]');
+await btn.hover();
+await new Promise(r => setTimeout(r, 400));
+await page.screenshot({ path: path.join(out, 'nav-hover.png') });
 
 await browser.close();
 console.log('Done');

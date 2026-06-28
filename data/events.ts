@@ -2,7 +2,7 @@ import { Event } from "@/lib/types";
 
 export const events: Event[] = [
   {
-    title: "Community Health Forum — Dar es Salaam",
+    title: "Community Health Forum: Dar es Salaam",
     slug: "community-health-forum-dar-es-salaam",
     date: "2026-07-15T00:00:00.000Z",
     location: "Dar es Salaam, Tanzania",

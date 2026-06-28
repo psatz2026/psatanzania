@@ -7,19 +7,23 @@ import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 
 const navLinks = [
+  { label: "Home", href: "/" },
   { label: "About", href: "/about" },
   { label: "Programs", href: "/causes" },
-  { label: "Events", href: "/event" },
-  { label: "Blog", href: "/blog" },
-  { label: "Volunteers", href: "/volunteers" },
-  { label: "Gallery", href: "/gallery" },
+  { label: "Team", href: "/team" },
   { label: "Contact", href: "/contact" },
 ];
+
+// Pages whose top section is dark (navy) — nav starts with white text on these
+const darkHeroRoutes = ["/", "/about", "/causes", "/team", "/faqs", "/become-a-volunteer", "/contact"];
 
 export default function Navigation() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
+
+  const hasDarkHero = darkHeroRoutes.includes(pathname);
+  const showDark = scrolled || !hasDarkHero;
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -39,7 +43,7 @@ export default function Navigation() {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? "bg-white/95 backdrop-blur-sm shadow-sm" : "bg-transparent"
+        showDark ? "bg-white/95 backdrop-blur-sm shadow-sm" : "bg-transparent"
       }`}
     >
       <div className="max-w-[1460px] mx-auto px-[30px]">
@@ -65,7 +69,7 @@ export default function Navigation() {
                 className={`font-body text-[15px] font-medium transition-colors duration-200 ${
                   pathname === link.href
                     ? "text-sky-blue"
-                    : scrolled
+                    : showDark
                     ? "text-carbon-black hover:text-sky-blue"
                     : "text-white/90 hover:text-white"
                 }`}
@@ -79,9 +83,14 @@ export default function Navigation() {
           <div className="hidden lg:flex items-center">
             <Link
               href="/become-a-volunteer"
-              className="inline-flex items-center gap-2 bg-sky-blue text-white font-body font-medium text-[15px] px-6 py-3 rounded-full transition-all duration-200 hover:bg-light-blue active:scale-95"
+              className="group relative inline-flex items-center justify-center bg-sky-blue text-white font-body font-medium text-[15px] px-6 h-[46px] rounded-full overflow-hidden active:scale-95"
             >
-              Get Involved
+              <span className="transition-transform duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] group-hover:-translate-y-[46px] whitespace-nowrap">
+                Get Involved
+              </span>
+              <span aria-hidden className="absolute inset-0 flex items-center justify-center translate-y-[46px] transition-transform duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] group-hover:translate-y-0 whitespace-nowrap">
+                Get Involved
+              </span>
             </Link>
           </div>
 
@@ -93,17 +102,17 @@ export default function Navigation() {
           >
             <span
               className={`block w-6 h-0.5 transition-all duration-300 ${
-                scrolled || mobileOpen ? "bg-carbon-black" : "bg-white"
+                showDark || mobileOpen ? "bg-carbon-black" : "bg-white"
               } ${mobileOpen ? "rotate-45 translate-y-[7px]" : ""}`}
             />
             <span
               className={`block w-6 h-0.5 transition-all duration-300 ${
-                scrolled || mobileOpen ? "bg-carbon-black" : "bg-white"
+                showDark || mobileOpen ? "bg-carbon-black" : "bg-white"
               } ${mobileOpen ? "opacity-0" : ""}`}
             />
             <span
               className={`block w-6 h-0.5 transition-all duration-300 ${
-                scrolled || mobileOpen ? "bg-carbon-black" : "bg-white"
+                showDark || mobileOpen ? "bg-carbon-black" : "bg-white"
               } ${mobileOpen ? "-rotate-45 -translate-y-[7px]" : ""}`}
             />
           </button>

@@ -36,7 +36,7 @@ By accessing and using the PSA Tanzania website, you agree to the following term
 This website is provided for informational purposes about PSA Tanzania's mission, programs, and activities. You may use it for personal, non-commercial purposes.
 
 ### Intellectual Property
-All content on this website — including text, images, and graphics — is the property of PSA Tanzania and may not be reproduced without permission.
+All content on this website, including text, images, and graphics, is the property of PSA Tanzania and may not be reproduced without permission.
 
 ### Disclaimers
 The content on this site is provided in good faith for general information. It does not constitute medical advice. For health-related decisions, please consult a qualified healthcare professional.

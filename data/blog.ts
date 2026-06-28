@@ -20,7 +20,7 @@ export const posts: BlogPost[] = [
     category: "Community Health",
     author: "Amina Salehe",
     excerpt:
-      "Community health workers are often the first — and sometimes only — point of contact for patients in rural Tanzania. We explore their critical role in patient safety.",
+      "Community health workers are often the first, and sometimes only, point of contact for patients in rural Tanzania. We explore their critical role in patient safety.",
     image: "https://framerusercontent.com/images/nmBXjeuU5Pr3XtsNLTfUj7YhY.jpg",
     content:
       "In rural districts across Tanzania, community health workers (CHWs) bridge the gap between formal health facilities and the communities they serve. Trained to recognize warning signs, refer patients appropriately, and provide basic care...",

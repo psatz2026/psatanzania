@@ -49,7 +49,7 @@ export default function MissionSection() {
                   Our strategic pillars
                 </h2>
                 <p className="font-body text-[18px] leading-[1.5] text-white/70">
-                  Six mutually reinforcing pillars guide our work from 2026 to 2029 — explore the full set on our Programs page.
+                  Six mutually reinforcing pillars guide our work from 2026 to 2029. Explore the full set on our Programs page.
                 </p>
               </AnimateIn>
 

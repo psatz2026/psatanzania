@@ -5,11 +5,11 @@ export default function PartnersQuoteSection() {
   return (
     <section className="py-[140px]">
       <div className="max-w-[1460px] mx-auto px-[30px]">
-        <div className="flex flex-col gap-14 max-w-[1000px]">
+        <div className="flex flex-col gap-14 max-w-[1000px] mx-auto">
           {/* Heading */}
           <div className="max-w-[700px] mx-auto text-center">
             <h2 className="font-heading text-[32px] lg:text-[40px] xl:text-[46px] leading-[1.2] text-carbon-black">
-              Patients are not just recipients of care — they are partners in making it safer.
+              Patients are not just recipients of care. They are partners in making it safer.
             </h2>
           </div>
 

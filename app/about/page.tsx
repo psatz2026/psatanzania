@@ -52,7 +52,7 @@ export default function AboutPage() {
 
       <CTASection
         title="Be part of the change."
-        description="Whether you are a patient, health worker, researcher, or concerned citizen — there is a place for you in PSA Tanzania."
+        description="Whether you are a patient, health worker, researcher, or concerned citizen, there is a place for you in PSA Tanzania."
       />
     </>
   );
