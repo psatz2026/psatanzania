@@ -1,5 +1,18 @@
+"use client";
+
 import Image from "next/image";
+import { motion } from "framer-motion";
 import Button from "@/components/ui/Button";
+
+const ease = [0.22, 1, 0.36, 1] as const;
+
+function fadeUp(delay = 0) {
+  return {
+    initial: { opacity: 0, y: 40 },
+    animate: { opacity: 1, y: 0 },
+    transition: { duration: 0.7, ease, delay },
+  };
+}
 
 export default function Hero() {
   return (
@@ -11,24 +24,26 @@ export default function Hero() {
           <div className="flex flex-col gap-10 justify-between h-full">
             <div className="flex flex-col gap-9">
               <div className="flex flex-col gap-5">
-                <h1 className="font-heading text-[56px] lg:text-[72px] xl:text-[80px] leading-[1.08] text-white">
+                <motion.h1
+                  {...fadeUp(0)}
+                  className="font-heading text-[56px] lg:text-[72px] xl:text-[80px] leading-[1.08] text-white"
+                >
                   Promoting patient safety and patient-centred care in Tanzania
-                </h1>
-                <p className="font-body text-[18px] lg:text-[20px] leading-[1.4] text-white/75 max-w-[540px]">
+                </motion.h1>
+                <motion.p
+                  {...fadeUp(0.15)}
+                  className="font-body text-[18px] lg:text-[20px] leading-[1.4] text-white/75 max-w-[540px]"
+                >
                   A youth-led alliance empowering patients and communities, generating evidence, and advocating for accountability to reduce preventable harm and strengthen trust in the health system.
-                </p>
+                </motion.p>
               </div>
-              <div className="pb-10">
-                <Button
-                  label="Get Involved"
-                  href="/become-a-volunteer"
-                  variant="white"
-                />
-              </div>
+              <motion.div {...fadeUp(0.28)} className="pb-10">
+                <Button label="Get Involved" href="/become-a-volunteer" variant="white" />
+              </motion.div>
             </div>
 
             {/* Tagline row */}
-            <div className="flex items-center gap-3">
+            <motion.div {...fadeUp(0.4)} className="flex items-center gap-3">
               <div className="flex items-center gap-1.5">
                 {[...Array(5)].map((_, i) => (
                   <svg key={i} width="14" height="14" viewBox="0 0 24 24" fill="#FFD166">
@@ -39,13 +54,17 @@ export default function Hero() {
               <p className="font-body text-[14px] text-white/60">
                 Youth-led · Founded 2026 · Tanzania
               </p>
-            </div>
+            </motion.div>
           </div>
 
           {/* Right — Images + yellow card */}
-          <div className="flex flex-col gap-10 pt-5">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease, delay: 0.2 }}
+            className="flex flex-col gap-10 pt-5"
+          >
             <div className="grid grid-cols-2 gap-4">
-              {/* Main photo */}
               <div className="col-span-2 relative rounded-2xl overflow-hidden h-[260px]">
                 <Image
                   src="https://framerusercontent.com/images/7E3nqiTmmCAKr7Ynna3VJv5tsQs.jpg"
@@ -55,7 +74,6 @@ export default function Hero() {
                   priority
                 />
               </div>
-              {/* Donation box illustration */}
               <div className="col-span-2 relative h-[140px]">
                 <Image
                   src="https://framerusercontent.com/images/WXhvjJmV3fdgw32EPDbNgovDwWE.svg"
@@ -83,7 +101,7 @@ export default function Hero() {
               </p>
               <Button label="Our Programs" href="/causes" variant="outlined" className="!border-carbon-black !text-carbon-black hover:!bg-carbon-black hover:!text-white flex-shrink-0" />
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

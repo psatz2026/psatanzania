@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Accordion from "@/components/ui/Accordion";
 import Button from "@/components/ui/Button";
+import AnimateIn from "@/components/ui/AnimateIn";
 
 const pillars = [
   {
@@ -43,29 +44,29 @@ export default function MissionSection() {
           <div className="p-[60px] lg:p-[80px] xl:p-[100px]">
             <div className="flex flex-col gap-14">
               {/* Header */}
-              <div className="flex flex-col gap-4 max-w-[700px] mx-auto text-center">
+              <AnimateIn className="flex flex-col gap-4 max-w-[700px] mx-auto text-center">
                 <h2 className="font-heading text-[40px] lg:text-[56px] leading-[1.1] text-white">
                   Our strategic pillars
                 </h2>
                 <p className="font-body text-[18px] leading-[1.5] text-white/70">
                   Six mutually reinforcing pillars guide our work from 2026 to 2029 — explore the full set on our Programs page.
                 </p>
-              </div>
+              </AnimateIn>
 
               {/* Content grid */}
               <div className="flex flex-col lg:flex-row gap-16 items-start">
-                <div className="lg:w-[55%] flex flex-col gap-10">
+                <AnimateIn delay={0.1} className="lg:w-[55%] flex flex-col gap-10">
                   <Accordion items={pillars} light />
                   <Button label="Our Programs" href="/causes" variant="white" />
-                </div>
-                <div className="lg:w-[45%] relative h-[400px] lg:h-[600px] rounded-2xl overflow-hidden">
+                </AnimateIn>
+                <AnimateIn delay={0.2} className="lg:w-[45%] relative h-[400px] lg:h-[600px] rounded-2xl overflow-hidden">
                   <Image
-                    src="https://framerusercontent.com/images/ILFepY3qliL16fAByJCOUk1A.png"
+                    src="https://framerusercontent.com/images/nmBXjeuU5Pr3XtsNLTfUj7YhY.jpg"
                     alt="PSA Tanzania team"
                     fill
                     className="object-cover"
                   />
-                </div>
+                </AnimateIn>
               </div>
             </div>
           </div>

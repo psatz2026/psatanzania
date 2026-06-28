@@ -3,6 +3,7 @@ import "./globals.css";
 import { geist, satoshi } from "@/lib/fonts";
 import Navigation from "@/components/layout/Navigation";
 import Footer from "@/components/layout/Footer";
+import SmoothScroll from "@/components/layout/SmoothScroll";
 
 export const metadata: Metadata = {
   title: "PSA Tanzania — Collaborating for Better Care",
@@ -21,9 +22,11 @@ export default function RootLayout({
       className={`${geist.variable} ${satoshi.variable} antialiased`}
     >
       <body className="min-h-screen flex flex-col bg-white text-carbon-black">
-        <Navigation />
-        <main className="flex-1">{children}</main>
-        <Footer />
+        <SmoothScroll>
+          <Navigation />
+          <main className="flex-1">{children}</main>
+          <Footer />
+        </SmoothScroll>
       </body>
     </html>
   );
