@@ -14,7 +14,6 @@ const navLinks = [
   { label: "Contact", href: "/contact" },
 ];
 
-// Pages whose top section is dark (navy) — nav starts with white text on these
 const darkHeroRoutes = ["/", "/about", "/causes", "/team", "/faqs", "/become-a-volunteer", "/contact"];
 
 export default function Navigation() {
@@ -31,9 +30,7 @@ export default function Navigation() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  useEffect(() => {
-    setMobileOpen(false);
-  }, [pathname]);
+  useEffect(() => { setMobileOpen(false); }, [pathname]);
 
   useEffect(() => {
     document.body.style.overflow = mobileOpen ? "hidden" : "";
@@ -48,16 +45,30 @@ export default function Navigation() {
     >
       <div className="max-w-[1460px] mx-auto px-[30px]">
         <div className="flex items-center justify-between h-[80px]">
+
           {/* Logo */}
           <Link href="/" className="flex-shrink-0">
-            <Image
-              src="/psa_logo.png"
-              alt="Patient Safety Alliance Tanzania"
-              width={120}
-              height={56}
-              className="h-14 w-auto object-contain"
-              priority
-            />
+            {showDark ? (
+              <Image
+                src="/2.png"
+                alt="Patient Safety Alliance Tanzania"
+                width={120}
+                height={60}
+                className="h-[60px] w-auto object-contain"
+                priority
+              />
+            ) : (
+              <span className="flex items-center justify-center w-[52px] h-[52px] rounded-full bg-white shadow-sm">
+                <Image
+                  src="/1.png"
+                  alt="Patient Safety Alliance Tanzania"
+                  width={34}
+                  height={34}
+                  className="w-[34px] h-[34px] object-contain"
+                  priority
+                />
+              </span>
+            )}
           </Link>
 
           {/* Desktop Nav Links */}
@@ -100,21 +111,18 @@ export default function Navigation() {
             onClick={() => setMobileOpen((v) => !v)}
             aria-label="Toggle menu"
           >
-            <span
-              className={`block w-6 h-0.5 transition-all duration-300 ${
-                showDark || mobileOpen ? "bg-carbon-black" : "bg-white"
-              } ${mobileOpen ? "rotate-45 translate-y-[7px]" : ""}`}
-            />
-            <span
-              className={`block w-6 h-0.5 transition-all duration-300 ${
-                showDark || mobileOpen ? "bg-carbon-black" : "bg-white"
-              } ${mobileOpen ? "opacity-0" : ""}`}
-            />
-            <span
-              className={`block w-6 h-0.5 transition-all duration-300 ${
-                showDark || mobileOpen ? "bg-carbon-black" : "bg-white"
-              } ${mobileOpen ? "-rotate-45 -translate-y-[7px]" : ""}`}
-            />
+            {[
+              mobileOpen ? "rotate-45 translate-y-[7px]" : "",
+              mobileOpen ? "opacity-0" : "",
+              mobileOpen ? "-rotate-45 -translate-y-[7px]" : "",
+            ].map((extra, i) => (
+              <span
+                key={i}
+                className={`block w-6 h-0.5 transition-all duration-300 ${
+                  showDark || mobileOpen ? "bg-carbon-black" : "bg-white"
+                } ${extra}`}
+              />
+            ))}
           </button>
         </div>
       </div>
@@ -135,9 +143,7 @@ export default function Navigation() {
                   key={link.href}
                   href={link.href}
                   className={`font-body text-[17px] font-medium py-3 border-b border-carbon-black-5 transition-colors ${
-                    pathname === link.href
-                      ? "text-sky-blue"
-                      : "text-carbon-black hover:text-sky-blue"
+                    pathname === link.href ? "text-sky-blue" : "text-carbon-black hover:text-sky-blue"
                   }`}
                 >
                   {link.label}

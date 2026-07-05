@@ -9,6 +9,10 @@ export const metadata: Metadata = {
   title: "PSA Tanzania | Collaborating for Better Care",
   description:
     "Patient Safety Alliance Tanzania is a youth-led nonprofit promoting patient safety, strengthening patient voices, and supporting a more responsive, inclusive, and accountable healthcare system in Tanzania.",
+  icons: {
+    icon: "/1.png",
+    apple: "/1.png",
+  },
 };
 
 export default function RootLayout({

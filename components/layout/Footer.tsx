@@ -64,14 +64,19 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12">
           {/* Brand Column */}
           <div className="lg:col-span-2 flex flex-col gap-6">
-            <Link href="/" className="inline-block bg-white rounded-2xl p-3">
-              <Image
-                src="/psa_logo.png"
-                alt="Patient Safety Alliance Tanzania"
-                width={120}
-                height={56}
-                className="h-14 w-auto object-contain"
-              />
+            <Link href="/" className="inline-flex items-center gap-4">
+              <span className="flex items-center justify-center w-[52px] h-[52px] rounded-full bg-white shadow-sm flex-shrink-0">
+                <Image
+                  src="/1.png"
+                  alt="Patient Safety Alliance Tanzania"
+                  width={34}
+                  height={34}
+                  className="w-[34px] h-[34px] object-contain"
+                />
+              </span>
+              <span className="font-heading text-[15px] leading-[1.3] text-white max-w-[160px]">
+                Patient Safety Alliance Tanzania
+              </span>
             </Link>
             <p className="font-body text-[15px] leading-[1.6] text-white/70 max-w-[320px]">
               A youth-led alliance promoting patient safety and patient-centred
