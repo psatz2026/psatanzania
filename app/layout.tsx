@@ -4,15 +4,12 @@ import { geist, satoshi } from "@/lib/fonts";
 import Navigation from "@/components/layout/Navigation";
 import Footer from "@/components/layout/Footer";
 import SmoothScroll from "@/components/layout/SmoothScroll";
+import ScrollToTop from "@/components/layout/ScrollToTop";
 
 export const metadata: Metadata = {
   title: "PSA Tanzania | Collaborating for Better Care",
   description:
     "Patient Safety Alliance Tanzania is a youth-led nonprofit promoting patient safety, strengthening patient voices, and supporting a more responsive, inclusive, and accountable healthcare system in Tanzania.",
-  icons: {
-    icon: "/1.png",
-    apple: "/1.png",
-  },
 };
 
 export default function RootLayout({
@@ -30,6 +27,7 @@ export default function RootLayout({
           <Navigation />
           <main className="flex-1">{children}</main>
           <Footer />
+          <ScrollToTop />
         </SmoothScroll>
       </body>
     </html>

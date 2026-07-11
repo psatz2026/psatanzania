@@ -14,18 +14,18 @@ export default function CauseDetailPage({ params }: { params: { slug: string } }
 
   return (
     <>
-      <section className="bg-navy-blue pt-[160px] pb-[80px]">
+      <section className="bg-navy-blue pt-[130px] lg:pt-[170px] pb-[60px] lg:pb-[90px]">
         <div className="max-w-[1460px] mx-auto px-[30px]">
           <Button label="← All programs" href="/causes" variant="ghost" className="!text-white/60 hover:!text-white mb-8 !px-0" />
-          <div className="max-w-[800px]">
-            <div className="mb-4"><Badge label={cause.category} variant="blue" /></div>
-            <h1 className="font-heading text-[46px] lg:text-[60px] leading-[1.1] text-white mb-6">{cause.title}</h1>
-            <p className="font-body text-[20px] leading-[1.5] text-white/75">{cause.description}</p>
+          <div className="mb-4"><Badge label={cause.category} variant="blue" /></div>
+          <h1 className="font-heading text-[clamp(36px,6vw,68px)] leading-[1.08] max-w-[820px] text-white">{cause.title}</h1>
+          <div className="border-t border-white/10 mt-10 pt-7 max-w-[560px]">
+            <p className="font-body text-[17px] sm:text-[19px] leading-[1.6] text-white/70">{cause.description}</p>
           </div>
         </div>
       </section>
 
-      <section className="py-[80px]">
+      <section className="py-[56px] lg:py-[80px]">
         <div className="max-w-[1460px] mx-auto px-[30px]">
           <div className="flex flex-col lg:flex-row gap-16">
             <div className="lg:w-[60%] flex flex-col gap-8">
@@ -39,7 +39,7 @@ export default function CauseDetailPage({ params }: { params: { slug: string } }
             <div className="lg:w-[40%]">
               <div className="sticky top-24 flex flex-col gap-6 p-8 bg-ice-blue rounded-2xl">
                 <h3 className="font-heading text-[20px] text-navy-blue">Get involved</h3>
-                <p className="font-body text-[15px] leading-[1.6] text-steel-gray">
+                <p className="font-body text-[16px] leading-[1.6] text-steel-gray">
                   Interested in supporting this program? We welcome volunteers, partners, and funders.
                 </p>
                 <Button label="Volunteer with us" href="/become-a-volunteer" variant="primary" />

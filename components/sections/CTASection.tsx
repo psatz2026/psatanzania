@@ -20,7 +20,7 @@ export default function CTASection({
 }: CTASectionProps) {
   return (
     <section className="bg-sky-blue">
-      <div className="max-w-[1460px] mx-auto px-[30px] py-[80px]">
+      <div className="max-w-[1460px] mx-auto px-[30px] py-[56px] lg:py-[80px]">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-10">
           <AnimateIn className="flex flex-col gap-4 max-w-[600px]">
             <h2 className="font-heading text-[40px] lg:text-[46px] leading-[1.1] text-white">

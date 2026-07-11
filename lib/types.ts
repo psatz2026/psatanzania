@@ -31,7 +31,8 @@ export interface Volunteer {
   name: string;
   role: string;
   image: string;
-  bio: string;
+  rank: "leadership" | "member";
+  bio?: string;
 }
 
 export interface FAQ {

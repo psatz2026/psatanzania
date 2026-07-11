@@ -38,7 +38,7 @@ const pillars = [
 
 export default function MissionSection() {
   return (
-    <section className="py-[140px]">
+    <section className="py-[80px] lg:py-[140px]">
       <div className="max-w-[1460px] mx-auto px-[30px]">
         <div className="bg-navy-blue rounded-2xl overflow-hidden">
           <div className="p-[60px] lg:p-[80px] xl:p-[100px]">

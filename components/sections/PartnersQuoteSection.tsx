@@ -3,7 +3,7 @@ import Button from "@/components/ui/Button";
 
 export default function PartnersQuoteSection() {
   return (
-    <section className="py-[140px]">
+    <section className="py-[80px] lg:py-[140px]">
       <div className="max-w-[1460px] mx-auto px-[30px]">
         <div className="flex flex-col gap-14 max-w-[1000px] mx-auto">
           {/* Heading */}

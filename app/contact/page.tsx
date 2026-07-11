@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Button from "@/components/ui/Button";
 import AnimateIn from "@/components/ui/AnimateIn";
+import PageHero from "@/components/sections/PageHero";
 
 const socials = [
   {
@@ -44,38 +45,23 @@ const socials = [
 ];
 
 const inputClass =
-  "font-body text-[15px] text-carbon-black w-full px-4 py-3 rounded-lg border border-steel-gray/25 bg-white focus:outline-none focus:border-sky-blue placeholder:text-steel-gray/40 transition-colors";
+  "font-body text-[16px] text-carbon-black w-full px-4 py-3 rounded-lg border border-steel-gray/25 bg-white focus:outline-none focus:border-sky-blue placeholder:text-steel-gray/40 transition-colors";
 
-const labelClass = "font-body text-[13px] font-medium text-carbon-black mb-1.5 block";
+const labelClass = "font-body text-[14px] font-medium text-carbon-black mb-1.5 block";
 
 export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
 
   return (
     <>
-      {/* Navy hero header */}
-      <section className="bg-navy-blue pt-[160px] pb-[100px]">
-        <div className="max-w-[1460px] mx-auto px-[30px]">
-          <div className="max-w-[700px]">
-            <AnimateIn y={16}>
-              <p className="font-body text-[14px] font-medium tracking-widest uppercase text-sky-blue mb-6">Contact</p>
-            </AnimateIn>
-            <AnimateIn delay={0.1}>
-              <h1 className="font-heading text-[56px] lg:text-[72px] leading-[1.08] text-white mb-8">
-                Get in touch
-              </h1>
-            </AnimateIn>
-            <AnimateIn delay={0.2}>
-              <p className="font-body text-[20px] leading-[1.5] text-white/75">
-                Whether you are a patient, health worker, researcher, or organization, we want to hear from you.
-              </p>
-            </AnimateIn>
-          </div>
-        </div>
-      </section>
+      <PageHero
+        eyebrow="Contact"
+        title="Get in touch"
+        lead="Whether you are a patient, health worker, researcher, or organization, we want to hear from you."
+      />
 
       {/* Content */}
-      <section className="py-[100px] bg-ice-blue">
+      <section className="py-[60px] lg:py-[100px] bg-ice-blue">
         <div className="max-w-[1460px] mx-auto px-[30px]">
           <div className="flex flex-col lg:flex-row gap-10">
 
@@ -84,8 +70,8 @@ export default function ContactPage() {
 
               <div className="bg-white rounded-2xl p-8 flex flex-col gap-7 shadow-sm">
                 <div className="flex flex-col gap-1.5">
-                  <span className="font-body text-[11px] font-medium uppercase tracking-widest text-steel-gray/50">Email</span>
-                  <a href="mailto:info@psatanzania.org" className="font-body text-[15px] text-carbon-black hover:text-sky-blue transition-colors break-all">
+                  <span className="font-body text-[12px] font-medium uppercase tracking-widest text-steel-gray/50">Email</span>
+                  <a href="mailto:info@psatanzania.org" className="font-body text-[16px] text-carbon-black hover:text-sky-blue transition-colors break-all">
                     info@psatanzania.org
                   </a>
                 </div>
@@ -93,14 +79,14 @@ export default function ContactPage() {
                 <div className="h-px bg-steel-gray/10" />
 
                 <div className="flex flex-col gap-1.5">
-                  <span className="font-body text-[11px] font-medium uppercase tracking-widest text-steel-gray/50">Location</span>
-                  <span className="font-body text-[15px] text-carbon-black">Dar es Salaam, Tanzania</span>
+                  <span className="font-body text-[12px] font-medium uppercase tracking-widest text-steel-gray/50">Location</span>
+                  <span className="font-body text-[16px] text-carbon-black">Dar es Salaam, Tanzania</span>
                 </div>
 
                 <div className="h-px bg-steel-gray/10" />
 
                 <div className="flex flex-col gap-3">
-                  <span className="font-body text-[11px] font-medium uppercase tracking-widest text-steel-gray/50">Follow us</span>
+                  <span className="font-body text-[12px] font-medium uppercase tracking-widest text-steel-gray/50">Follow us</span>
                   <div className="flex gap-3">
                     {socials.map((s) => (
                       <a
@@ -119,7 +105,7 @@ export default function ContactPage() {
 
                 <div className="h-px bg-steel-gray/10" />
 
-                <p className="font-body text-[13px] leading-[1.7] text-steel-gray">
+                <p className="font-body text-[14px] leading-[1.7] text-steel-gray">
                   We aim to respond within 2 business days.
                 </p>
               </div>

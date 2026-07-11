@@ -1,5 +1,6 @@
 import Accordion from "@/components/ui/Accordion";
 import CTASection from "@/components/sections/CTASection";
+import PageHero from "@/components/sections/PageHero";
 import AnimateIn from "@/components/ui/AnimateIn";
 import { faqs } from "@/data/faqs";
 
@@ -8,16 +9,13 @@ export default function FAQsPage() {
 
   return (
     <>
-      <section className="bg-navy-blue pt-[160px] pb-[100px]">
-        <div className="max-w-[1460px] mx-auto px-[30px]">
-          <div className="max-w-[700px]">
-            <AnimateIn y={16}><p className="font-body text-[14px] font-medium tracking-widest uppercase text-sky-blue mb-6">FAQs</p></AnimateIn>
-            <AnimateIn delay={0.1}><h1 className="font-heading text-[56px] lg:text-[72px] leading-[1.08] text-white mb-8">Frequently asked questions</h1></AnimateIn>
-          </div>
-        </div>
-      </section>
+      <PageHero
+        eyebrow="FAQs"
+        title="Frequently asked questions"
+        lead="Answers to the questions we hear most from patients, volunteers, and partners."
+      />
 
-      <section className="py-[100px]">
+      <section className="py-[60px] lg:py-[100px]">
         <div className="max-w-[1460px] mx-auto px-[30px]">
           <div className="max-w-[800px] mx-auto flex flex-col gap-14">
             {categories.map((category, i) => (

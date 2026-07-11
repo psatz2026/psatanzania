@@ -39,8 +39,8 @@ const features = [
 
 export default function FeatureScrollSection() {
   return (
-    <section className="overflow-x-clip pt-[140px]">
-      <div className="max-w-[1460px] mx-auto px-[30px] pb-[140px]">
+    <section className="overflow-x-clip pt-[80px] lg:pt-[140px]">
+      <div className="max-w-[1460px] mx-auto px-[30px] pb-[80px] lg:pb-[140px]">
 
         {/* Desktop — sticky left + stacking cards (mirrors Framer exactly) */}
         <div className="hidden lg:flex gap-[80px]">
@@ -67,7 +67,7 @@ export default function FeatureScrollSection() {
                 <h3 className="font-heading text-[28px] lg:text-[32px] leading-[1.2] text-carbon-black">
                   {feature.title}
                 </h3>
-                <p className="font-body text-[17px] leading-[1.6] text-steel-gray">
+                <p className="font-body text-[16px] leading-[1.6] text-steel-gray">
                   {feature.description}
                 </p>
               </div>

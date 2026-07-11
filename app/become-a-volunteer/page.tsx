@@ -3,6 +3,7 @@
 import { useState } from "react";
 import CheckList from "@/components/ui/CheckList";
 import Button from "@/components/ui/Button";
+import PageHero from "@/components/sections/PageHero";
 
 const roles = ["Community Health Champion", "Patient Advocate", "Program Volunteer", "Research Assistant", "Communications & Social Media", "Policy & Advocacy"];
 
@@ -11,21 +12,13 @@ export default function BecomeAVolunteerPage() {
 
   return (
     <>
-      <section className="bg-navy-blue pt-[160px] pb-[100px]">
-        <div className="max-w-[1460px] mx-auto px-[30px]">
-          <div className="max-w-[700px]">
-            <p className="font-body text-[14px] font-medium tracking-widest uppercase text-sky-blue mb-6">Get Involved</p>
-            <h1 className="font-heading text-[56px] lg:text-[72px] leading-[1.08] text-white mb-8">
-              Become a volunteer
-            </h1>
-            <p className="font-body text-[20px] leading-[1.5] text-white/75">
-              Join PSA Tanzania and use your skills to build a safer healthcare system for every patient.
-            </p>
-          </div>
-        </div>
-      </section>
+      <PageHero
+        eyebrow="Get Involved"
+        title="Become a volunteer"
+        lead="Join PSA Tanzania and use your skills to build a safer healthcare system for every patient."
+      />
 
-      <section className="py-[100px] bg-ice-blue">
+      <section className="py-[60px] lg:py-[100px] bg-ice-blue">
         <div className="max-w-[1460px] mx-auto px-[30px]">
           <div className="flex flex-col lg:flex-row gap-16">
             {/* Why volunteer */}

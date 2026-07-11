@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const values = [
   {
     title: "Patient Safety First",
@@ -42,16 +44,16 @@ const values = [
 ];
 
 const avatars = [
-  "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=200&auto=format&fit=crop&crop=face",
-  "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&auto=format&fit=crop&crop=face",
-  "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&auto=format&fit=crop&crop=face",
-  "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200&auto=format&fit=crop&crop=face",
+  "/team/anna_peter-psachairperson.png",
+  "/team/Dr.Godfrey_Smart-psageneralsecretary.png",
+  "/team/DR.SAUL_SHEMDOE-foundingmemberandtreasurer.png",
+  "/team/Dr.Jacquiline_tungaraza-member.png",
 ];
 
 export default function StickyValueStack() {
   return (
-    <section className="overflow-x-clip pt-[140px]">
-      <div className="max-w-[1460px] mx-auto px-[30px] pb-[140px]">
+    <section className="overflow-x-clip pt-[80px] lg:pt-[140px]">
+      <div className="max-w-[1460px] mx-auto px-[30px] pb-[80px] lg:pb-[140px]">
 
         {/* Desktop — sticky left + stacking value cards */}
         <div className="hidden lg:flex gap-[80px]">
@@ -61,23 +63,29 @@ export default function StickyValueStack() {
             <h2 className="font-heading text-[56px] leading-[1.1] text-carbon-black">
               Our mission
             </h2>
-            <p className="font-body text-[17px] leading-[1.7] text-steel-gray">
+            <p className="font-body text-[18px] leading-[1.7] text-steel-gray">
               To promote patient safety and patient-centred care in Tanzania by empowering communities, generating evidence, and advocating for accountability within the health system.
             </p>
-            {/* Overlapping avatar circles */}
-            <div className="flex items-center" style={{ marginLeft: "-4px" }}>
+            {/* Overlapping avatar circles — links to team page */}
+            <Link
+              href="/team"
+              className="group flex items-center"
+              style={{ marginLeft: "-4px" }}
+            >
               {avatars.map((src, i) => (
                 <div
                   key={i}
-                  className="w-12 h-12 rounded-full border-2 border-white overflow-hidden flex-shrink-0"
+                  className="w-12 h-12 rounded-full border-2 border-white overflow-hidden flex-shrink-0 bg-ice-blue transition-transform duration-200 ease-out group-hover:translate-x-[2px]"
                   style={{ marginLeft: i === 0 ? 0 : "-12px", zIndex: i }}
                 >
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={src} alt="Team member" className="w-full h-full object-cover" />
+                  <img src={src} alt="PSA Tanzania team member" className="w-full h-full object-cover" />
                 </div>
               ))}
-              <span className="ml-4 font-body text-[14px] text-steel-gray">Our team</span>
-            </div>
+              <span className="ml-4 font-body text-[14px] font-medium text-steel-gray transition-colors duration-200 group-hover:text-sky-blue">
+                Our team →
+              </span>
+            </Link>
           </div>
 
           {/* Right: value card list — gap-[140px] creates scroll distance */}
@@ -94,7 +102,7 @@ export default function StickyValueStack() {
                 <h3 className="font-heading text-[28px] lg:text-[32px] leading-[1.2] text-carbon-black">
                   {value.title}
                 </h3>
-                <p className="font-body text-[17px] leading-[1.7] text-steel-gray">
+                <p className="font-body text-[16px] leading-[1.7] text-steel-gray">
                   {value.description}
                 </p>
               </div>
@@ -107,22 +115,22 @@ export default function StickyValueStack() {
         <div className="lg:hidden flex flex-col gap-10 pt-[60px]">
           <div className="flex flex-col gap-6">
             <h2 className="font-heading text-[40px] leading-[1.1] text-carbon-black">Our mission</h2>
-            <p className="font-body text-[17px] leading-[1.7] text-steel-gray">
+            <p className="font-body text-[18px] leading-[1.7] text-steel-gray">
               To promote patient safety and patient-centred care in Tanzania by empowering communities, generating evidence, and advocating for accountability within the health system.
             </p>
-            <div className="flex items-center">
+            <Link href="/team" className="flex items-center">
               {avatars.map((src, i) => (
                 <div
                   key={i}
-                  className="w-10 h-10 rounded-full border-2 border-white overflow-hidden flex-shrink-0"
+                  className="w-10 h-10 rounded-full border-2 border-white overflow-hidden flex-shrink-0 bg-ice-blue"
                   style={{ marginLeft: i === 0 ? 0 : "-10px", zIndex: i }}
                 >
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={src} alt="Team member" className="w-full h-full object-cover" />
+                  <img src={src} alt="PSA Tanzania team member" className="w-full h-full object-cover" />
                 </div>
               ))}
-              <span className="ml-3 font-body text-[13px] text-steel-gray">Our team</span>
-            </div>
+              <span className="ml-3 font-body text-[14px] font-medium text-steel-gray">Our team →</span>
+            </Link>
           </div>
           {values.map((value, i) => (
             <div key={i} className="bg-white rounded-2xl border border-carbon-black-5 p-8 flex flex-col gap-5">

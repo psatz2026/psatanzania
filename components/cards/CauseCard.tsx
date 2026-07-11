@@ -22,7 +22,7 @@ export default function CauseCard({ cause }: { cause: Cause }) {
         <h3 className="font-heading text-[20px] leading-[1.3] text-carbon-black group-hover:text-sky-blue transition-colors duration-200">
           {cause.title}
         </h3>
-        <p className="font-body text-[15px] leading-[1.5] text-steel-gray line-clamp-3">
+        <p className="font-body text-[16px] leading-[1.5] text-steel-gray line-clamp-3">
           {cause.description}
         </p>
         <span className="mt-2 inline-flex items-center gap-1 font-body font-medium text-[14px] text-sky-blue">

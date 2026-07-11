@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
+import { lenisStore } from "@/components/layout/SmoothScroll";
 
 const navLinks = [
   { label: "Home", href: "/" },
@@ -44,27 +45,40 @@ export default function Navigation() {
       }`}
     >
       <div className="max-w-[1460px] mx-auto px-[30px]">
-        <div className="flex items-center justify-between h-[80px]">
+        <div
+          className={`flex items-center justify-between transition-[height] duration-300 ${
+            scrolled ? "h-[60px] lg:h-[66px]" : "h-[70px] lg:h-[84px]"
+          }`}
+        >
 
           {/* Logo */}
-          <Link href="/" className="flex-shrink-0">
+          <Link
+            href="/"
+            className="flex-shrink-0"
+            onClick={(e) => {
+              if (pathname === "/") {
+                e.preventDefault();
+                lenisStore.lenis?.scrollTo(0);
+              }
+            }}
+          >
             {showDark ? (
               <Image
                 src="/2.png"
                 alt="Patient Safety Alliance Tanzania"
                 width={120}
                 height={60}
-                className="h-[60px] w-auto object-contain"
+                className="h-[40px] lg:h-[48px] w-auto object-contain"
                 priority
               />
             ) : (
-              <span className="flex items-center justify-center w-[52px] h-[52px] rounded-full bg-white shadow-sm">
+              <span className="flex items-center justify-center w-[42px] h-[42px] lg:w-[52px] lg:h-[52px] rounded-full bg-white shadow-sm">
                 <Image
                   src="/1.png"
                   alt="Patient Safety Alliance Tanzania"
                   width={34}
                   height={34}
-                  className="w-[34px] h-[34px] object-contain"
+                  className="w-[26px] h-[26px] lg:w-[34px] lg:h-[34px] object-contain"
                   priority
                 />
               </span>
@@ -77,15 +91,25 @@ export default function Navigation() {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`font-body text-[15px] font-medium transition-colors duration-200 ${
+                className={`group relative font-body text-[15px] font-medium transition-colors duration-200 ${
                   pathname === link.href
                     ? "text-sky-blue"
                     : showDark
                     ? "text-carbon-black hover:text-sky-blue"
-                    : "text-white/90 hover:text-white"
+                    : "text-white/90 hover:text-light-blue"
                 }`}
               >
                 {link.label}
+                <span
+                  aria-hidden
+                  className={`absolute left-0 -bottom-1.5 h-[2px] w-full rounded-full origin-left transition-transform duration-200 ease-out ${
+                    showDark ? "bg-sky-blue" : "bg-light-blue"
+                  } ${
+                    pathname === link.href
+                      ? "scale-x-100"
+                      : "scale-x-0 group-hover:scale-x-100"
+                  }`}
+                />
               </Link>
             ))}
           </nav>
