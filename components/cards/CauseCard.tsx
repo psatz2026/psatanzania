@@ -1,6 +1,6 @@
-import Image from "next/image";
 import Link from "next/link";
 import Badge from "@/components/ui/Badge";
+import ProgramCover from "@/components/ui/ProgramCover";
 import { Cause } from "@/lib/types";
 
 export default function CauseCard({ cause }: { cause: Cause }) {
@@ -10,12 +10,7 @@ export default function CauseCard({ cause }: { cause: Cause }) {
       className="group flex flex-col bg-white rounded-2xl overflow-hidden border border-carbon-black-5 hover:shadow-lg transition-shadow duration-300"
     >
       <div className="relative h-[220px] overflow-hidden">
-        <Image
-          src={cause.image}
-          alt={cause.title}
-          fill
-          className="object-cover transition-transform duration-500 group-hover:scale-105"
-        />
+        <ProgramCover slug={cause.slug} />
       </div>
       <div className="flex flex-col gap-3 p-6">
         <Badge label={cause.category} variant="ice" />

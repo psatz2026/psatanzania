@@ -1,5 +1,5 @@
-import Image from "next/image";
 import Button from "@/components/ui/Button";
+import PartnersIllustration from "@/components/illustrations/PartnersIllustration";
 
 export default function PartnersQuoteSection() {
   return (
@@ -15,22 +15,14 @@ export default function PartnersQuoteSection() {
 
           {/* Image + text */}
           <div className="flex flex-col lg:flex-row gap-12 items-center">
-            <div className="lg:w-[45%] relative h-[300px] lg:h-[380px] w-full rounded-2xl overflow-hidden">
-              <Image
-                src="https://framerusercontent.com/images/nmBXjeuU5Pr3XtsNLTfUj7YhY.jpg"
-                alt="Patient safety community"
-                fill
-                className="object-cover"
-              />
+            <div className="lg:w-[45%] h-[300px] lg:h-[380px] w-full rounded-2xl bg-ice-blue flex items-center justify-center overflow-hidden">
+              <PartnersIllustration className="w-full h-full" />
             </div>
             <div className="lg:w-[55%] flex flex-col justify-between gap-16">
               <p className="font-body text-[18px] leading-[1.6] text-steel-gray">
                 Patient Safety Alliance is a youth-led non-profit promoting patient safety, strengthening patient voices, and supporting a more responsive, inclusive, and accountable healthcare system in Tanzania.
               </p>
-              <div className="flex flex-col gap-6">
-                <div className="w-px h-12 bg-steel-gray/20" />
-                <Button label="About Us" href="/about" variant="outlined" />
-              </div>
+              <Button label="About Us" href="/about" variant="outlined" />
             </div>
           </div>
         </div>

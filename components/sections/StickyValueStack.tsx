@@ -1,4 +1,5 @@
 import Link from "next/link";
+import StackingCards from "@/components/ui/StackingCards";
 
 const values = [
   {
@@ -88,27 +89,8 @@ export default function StickyValueStack() {
             </Link>
           </div>
 
-          {/* Right: value card list — gap-[140px] creates scroll distance */}
-          <div className="flex-1 flex flex-col gap-[140px] pt-[60px] min-w-0">
-            {values.map((value, i) => (
-              <div
-                key={i}
-                className="sticky bg-white rounded-2xl shadow-sm border border-carbon-black-5 p-10 flex flex-col gap-6"
-                style={{ top: "140px", zIndex: i + 1 }}
-              >
-                <div className="w-[64px] h-[64px] rounded-full bg-yellow flex items-center justify-center text-carbon-black flex-shrink-0">
-                  {value.icon}
-                </div>
-                <h3 className="font-heading text-[28px] lg:text-[32px] leading-[1.2] text-carbon-black">
-                  {value.title}
-                </h3>
-                <p className="font-body text-[16px] leading-[1.7] text-steel-gray">
-                  {value.description}
-                </p>
-              </div>
-            ))}
-            <div style={{ height: "1px" }} />
-          </div>
+          {/* Right: stacking value card deck */}
+          <StackingCards items={values} />
         </div>
 
         {/* Mobile — stacked layout */}
@@ -133,8 +115,8 @@ export default function StickyValueStack() {
             </Link>
           </div>
           {values.map((value, i) => (
-            <div key={i} className="bg-white rounded-2xl border border-carbon-black-5 p-8 flex flex-col gap-5">
-              <div className="w-14 h-14 rounded-full bg-yellow flex items-center justify-center text-carbon-black">
+            <div key={i} className="bg-white rounded-2xl border border-sky-blue/20 shadow-[0_2px_16px_rgba(27,56,136,0.07)] p-8 flex flex-col gap-5">
+              <div className="w-14 h-14 rounded-full bg-ice-blue flex items-center justify-center text-sky-blue">
                 {value.icon}
               </div>
               <h3 className="font-heading text-[22px] leading-[1.2] text-carbon-black">{value.title}</h3>

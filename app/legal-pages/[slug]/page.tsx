@@ -5,8 +5,13 @@ export function generateStaticParams() {
   return legalPages.map((p) => ({ slug: p.slug }));
 }
 
-export default function LegalPage({ params }: { params: { slug: string } }) {
-  const page = legalPages.find((p) => p.slug === params.slug);
+export default async function LegalPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
+  const page = legalPages.find((p) => p.slug === slug);
   if (!page) notFound();
 
   const lines = page.content.split("\n").filter((l) => l.trim());

@@ -10,7 +10,7 @@ export default function CausesStaticPage() {
         tone="light"
         eyebrow="Our Programs"
         title="Our programs"
-        lead="Six strategic pillars guiding PSA Tanzania's work from 2026 to 2029."
+        lead="Six strategic pillars guiding PSA Tanzania's work."
       />
       <section className="py-[60px] lg:py-[100px]">
         <div className="max-w-[1460px] mx-auto px-[30px]">

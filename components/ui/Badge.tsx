@@ -1,11 +1,10 @@
 interface BadgeProps {
   label: string;
-  variant?: "blue" | "yellow" | "ice";
+  variant?: "blue" | "ice";
 }
 
 const styles = {
   blue: "bg-sky-blue-20 text-sky-blue",
-  yellow: "bg-yellow-20 text-carbon-black",
   ice: "bg-ice-blue text-navy-blue",
 };
 

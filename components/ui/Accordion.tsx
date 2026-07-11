@@ -11,10 +11,28 @@ interface AccordionItem {
 interface AccordionProps {
   items: AccordionItem[];
   light?: boolean;
+  defaultOpen?: number;
+  /* Controlled mode — pass both to drive the accordion from outside */
+  value?: number | null;
+  onChange?: (index: number | null) => void;
 }
 
-export default function Accordion({ items, light = false }: AccordionProps) {
-  const [open, setOpen] = useState<number | null>(null);
+export default function Accordion({
+  items,
+  light = false,
+  defaultOpen,
+  value,
+  onChange,
+}: AccordionProps) {
+  const [internalOpen, setInternalOpen] = useState<number | null>(
+    defaultOpen ?? null
+  );
+  const controlled = value !== undefined;
+  const open = controlled ? value : internalOpen;
+  const setOpen = (i: number | null) => {
+    if (!controlled) setInternalOpen(i);
+    onChange?.(i);
+  };
 
   return (
     <div className="flex flex-col divide-y divide-current/10">

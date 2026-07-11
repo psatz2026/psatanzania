@@ -1,5 +1,5 @@
-import Image from "next/image";
 import { notFound } from "next/navigation";
+import ProgramCover from "@/components/ui/ProgramCover";
 import Button from "@/components/ui/Button";
 import Badge from "@/components/ui/Badge";
 import { causes } from "@/data/causes";
@@ -8,8 +8,13 @@ export function generateStaticParams() {
   return causes.map((c) => ({ slug: c.slug }));
 }
 
-export default function CauseDetailPage({ params }: { params: { slug: string } }) {
-  const cause = causes.find((c) => c.slug === params.slug);
+export default async function CauseDetailPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
+  const cause = causes.find((c) => c.slug === slug);
   if (!cause) notFound();
 
   return (
@@ -30,7 +35,7 @@ export default function CauseDetailPage({ params }: { params: { slug: string } }
           <div className="flex flex-col lg:flex-row gap-16">
             <div className="lg:w-[60%] flex flex-col gap-8">
               <div className="relative h-[400px] rounded-2xl overflow-hidden">
-                <Image src={cause.image} alt={cause.title} fill className="object-cover" />
+                <ProgramCover slug={cause.slug} size="hero" />
               </div>
               {cause.fullDescription && (
                 <p className="font-body text-[18px] leading-[1.7] text-steel-gray">{cause.fullDescription}</p>
