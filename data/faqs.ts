@@ -29,13 +29,13 @@ export const faqs: FAQ[] = [
     category: "Programs",
     question: "What programs does PSA Tanzania run?",
     answer:
-      "Our work is structured around six strategic pillars: Patient Empowerment, Evidence Generation, Policy Advocacy, Capacity Building, Accountability & Transparency, and Youth Leadership. Visit our Programs page to learn more about each.",
+      "Our work is structured around six strategic pillars: Patient Rights, Safety Awareness & Community Empowerment; Advocacy, Accountability & Policy Influence; Research, Evidence Generation & Learning; Capacity Building for Safer & Respectful Care; Partnerships, Movement Building & Patient Voice; and Institutional Strengthening & Sustainability. Visit our Programs page to learn more about each.",
   },
   {
     category: "Programs",
     question: "Where does PSA Tanzania operate?",
     answer:
-      "We operate primarily in Tanzania, with programs in Dar es Salaam, Dodoma, Arusha, and other regions. We are expanding our reach to additional districts as our volunteer network grows.",
+      "We operate in Tanzania, beginning with pilot community programs in selected areas and expanding in phases toward national reach as our volunteer network and partnerships grow.",
   },
   {
     category: "Support",

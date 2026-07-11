@@ -1,14 +1,21 @@
+import type { Metadata } from "next";
 import CTASection from "@/components/sections/CTASection";
 import PageHero from "@/components/sections/PageHero";
+
+export const metadata: Metadata = {
+  title: "About Us",
+  description:
+    "Patient Safety Alliance Tanzania is a youth-led movement reducing preventable harm and building a health system where every patient is treated with safety, dignity, and respect.",
+};
 import CounterCard from "@/components/cards/CounterCard";
 import StickyValueStack from "@/components/sections/StickyValueStack";
 import AnimateIn from "@/components/ui/AnimateIn";
 
 const stats = [
+  { value: 2026, suffix: "", label: "Year Founded" },
   { value: 6, suffix: "", label: "Strategic Pillars" },
-  { value: 5, suffix: "+", label: "Active Programs" },
-  { value: 20, suffix: "+", label: "Volunteers" },
-  { value: 3, suffix: "", label: "Regions Covered" },
+  { value: 7, suffix: "", label: "Core Values" },
+  { value: 10, suffix: "+", label: "Priority Groups Served" },
 ];
 
 export default function AboutPage() {

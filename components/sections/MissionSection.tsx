@@ -11,40 +11,40 @@ const ease = [0.23, 1, 0.32, 1] as const;
 
 const pillars = [
   {
-    question: "Patient Empowerment",
+    question: "Patient Rights, Safety Awareness & Community Empowerment",
     answer:
-      "We equip patients and communities with knowledge, skills, and platforms to actively participate in their healthcare decisions and advocate for their rights.",
-    icon: pillarIcons["patient-empowerment"],
+      "We strengthen patient and community awareness of patient rights, responsibilities, and safety practices through community dialogues, campaigns, youth engagement, and patient safety champions.",
+    icon: pillarIcons["patient-rights-awareness"],
   },
   {
-    question: "Evidence Generation",
+    question: "Advocacy, Accountability & Policy Influence",
     answer:
-      "We conduct research and collect data on patient safety incidents to generate evidence that informs policy, practice, and advocacy.",
-    icon: pillarIcons["evidence-generation"],
+      "We promote accountability and policy reforms that protect patients from preventable harm, engaging government, regulators, facilities, and civil society to strengthen patient protection.",
+    icon: pillarIcons["advocacy-policy-influence"],
   },
   {
-    question: "Policy Advocacy",
+    question: "Research, Evidence Generation & Learning",
     answer:
-      "We engage with government, regulators, and health institutions to promote patient-centred policies and accountability frameworks.",
-    icon: pillarIcons["policy-advocacy"],
+      "We generate and use evidence on patient experiences, safety gaps, and service delivery challenges so our advocacy is credible, ethical, and trusted by stakeholders.",
+    icon: pillarIcons["research-evidence-learning"],
   },
   {
-    question: "Capacity Building",
+    question: "Capacity Building for Safer & Respectful Care",
     answer:
-      "We train healthcare workers, community health volunteers, and patient advocates to build a culture of safety across the health system.",
+      "We build the capacity of patients, caregivers, community actors, and healthcare providers to promote safer, respectful, and patient-centred care.",
     icon: pillarIcons["capacity-building"],
   },
   {
-    question: "Accountability & Transparency",
+    question: "Partnerships, Movement Building & Patient Voice",
     answer:
-      "We promote open reporting systems, grievance mechanisms, and public accountability tools that reduce preventable harm.",
-    icon: pillarIcons["accountability-transparency"],
+      "We are building a trusted national platform that brings patients, communities, providers, and partners together so patient voices are organized, visible, and influential.",
+    icon: pillarIcons["partnerships-patient-voice"],
   },
   {
-    question: "Youth Leadership",
+    question: "Institutional Strengthening & Sustainability",
     answer:
-      "We place young people at the centre of health advocacy, creating pathways for youth-led change in healthcare governance.",
-    icon: pillarIcons["youth-leadership"],
+      "We invest in strong governance, safeguarding, data protection, and sustainable systems so PSA can deliver its mission professionally and protect community trust.",
+    icon: pillarIcons["institutional-strengthening"],
   },
 ];
 

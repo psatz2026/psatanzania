@@ -5,6 +5,17 @@ export function generateStaticParams() {
   return legalPages.map((p) => ({ slug: p.slug }));
 }
 
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
+  const page = legalPages.find((p) => p.slug === slug);
+  if (!page) return {};
+  return { title: page.title };
+}
+
 export default async function LegalPage({
   params,
 }: {

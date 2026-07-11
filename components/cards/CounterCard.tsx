@@ -32,7 +32,7 @@ export default function CounterCard({ value, suffix = "", label, light = false }
   return (
     <div ref={ref} className="flex flex-col gap-2">
       <span className={`font-heading text-[40px] lg:text-[56px] leading-none ${light ? "text-white" : "text-navy-blue"}`}>
-        {count.toLocaleString()}{suffix}
+        {count}{suffix}
       </span>
       <span className={`font-body text-[16px] ${light ? "text-white/70" : "text-steel-gray"}`}>
         {label}

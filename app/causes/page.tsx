@@ -1,5 +1,12 @@
+import type { Metadata } from "next";
 import CauseCard from "@/components/cards/CauseCard";
 import CTASection from "@/components/sections/CTASection";
+
+export const metadata: Metadata = {
+  title: "Our Programs",
+  description:
+    "Six strategic pillars guide PSA Tanzania's work: patient empowerment, evidence generation, policy advocacy, capacity building, accountability, and youth leadership.",
+};
 import PageHero from "@/components/sections/PageHero";
 import AnimateIn from "@/components/ui/AnimateIn";
 import { causes } from "@/data/causes";

@@ -8,6 +8,17 @@ export function generateStaticParams() {
   return causes.map((c) => ({ slug: c.slug }));
 }
 
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
+  const cause = causes.find((c) => c.slug === slug);
+  if (!cause) return {};
+  return { title: cause.title, description: cause.description };
+}
+
 export default async function CauseDetailPage({
   params,
 }: {

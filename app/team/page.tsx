@@ -1,5 +1,12 @@
+import type { Metadata } from "next";
 import VolunteerCard from "@/components/cards/VolunteerCard";
 import PageHero from "@/components/sections/PageHero";
+
+export const metadata: Metadata = {
+  title: "Our Team",
+  description:
+    "Meet the leadership and members of Patient Safety Alliance Tanzania — advocates, researchers, and health champions working for safer care.",
+};
 import Button from "@/components/ui/Button";
 import AnimateIn from "@/components/ui/AnimateIn";
 import { leadership, members } from "@/data/volunteers";

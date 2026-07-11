@@ -1,5 +1,12 @@
+import type { Metadata } from "next";
 import Accordion from "@/components/ui/Accordion";
 import CTASection from "@/components/sections/CTASection";
+
+export const metadata: Metadata = {
+  title: "FAQs",
+  description:
+    "Answers to common questions about Patient Safety Alliance Tanzania — who we are, what we do, and how to get involved.",
+};
 import PageHero from "@/components/sections/PageHero";
 import AnimateIn from "@/components/ui/AnimateIn";
 import { faqs } from "@/data/faqs";
