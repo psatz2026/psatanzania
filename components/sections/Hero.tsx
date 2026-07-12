@@ -1,7 +1,8 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { motion, useReducedMotion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+import { motion, useInView, useReducedMotion } from "framer-motion";
+import { GrainGradient } from "@paper-design/shaders-react";
 import Button from "@/components/ui/Button";
 
 const ease = [0.23, 1, 0.32, 1] as const;
@@ -24,6 +25,9 @@ function fadeUp(delay = 0) {
 export default function Hero() {
   const [index, setIndex] = useState(0);
   const reduceMotion = useReducedMotion();
+  const sectionRef = useRef<HTMLElement>(null);
+  /* Shader render loop fully stops (speed 0) when the hero is off screen */
+  const inView = useInView(sectionRef, { margin: "200px 0px" });
 
   useEffect(() => {
     const id = setInterval(
@@ -34,8 +38,26 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className="bg-navy-blue min-h-[100svh] flex items-center overflow-x-clip">
-      <div className="max-w-[1460px] w-full mx-auto px-[30px] pt-[110px] pb-[70px]">
+    <section
+      ref={sectionRef}
+      className="relative bg-navy-blue min-h-[100svh] flex items-center overflow-x-clip"
+    >
+      {/* Ambient shader background — subtle drifting gradient in brand blues */}
+      <GrainGradient
+        className="absolute inset-0 w-full h-full"
+        colorBack="#1B3888"
+        colors={["#1B3888", "#24479e", "#2E8FD0", "#45B3E8"]}
+        softness={0.9}
+        intensity={0.12}
+        noise={0.12}
+        shape="wave"
+        speed={reduceMotion || !inView ? 0 : 0.15}
+        minPixelRatio={1}
+        maxPixelCount={1920 * 1080}
+      />
+      {/* Contrast scrim so text stays readable over brighter drifts */}
+      <div className="absolute inset-0 bg-navy-blue/40 pointer-events-none" />
+      <div className="relative max-w-[1460px] w-full mx-auto px-[30px] pt-[110px] pb-[70px]">
 
         {/* Headline — top left */}
         <motion.h1
@@ -71,9 +93,9 @@ export default function Hero() {
         <div className="grid grid-cols-1 lg:grid-cols-12 mt-14 lg:mt-20">
           <motion.div
             {...fadeUp(0.15)}
-            className="lg:col-start-8 lg:col-span-5 flex flex-col items-start gap-7 border-t border-white/10 pt-8"
+            className="lg:col-start-8 lg:col-span-5 flex flex-col items-start gap-7 border-t border-white/20 pt-8"
           >
-            <p className="font-body text-[17px] sm:text-[19px] leading-[1.6] text-white/70 max-w-[440px]">
+            <p className="font-body text-[17px] sm:text-[19px] leading-[1.6] text-white/90 max-w-[440px]">
               A youth-led alliance reducing preventable harm and putting
               patients at the centre of care.
             </p>
