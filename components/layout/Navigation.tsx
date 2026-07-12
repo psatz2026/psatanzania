@@ -42,7 +42,7 @@ export default function Navigation() {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        showDark ? "bg-white/95 backdrop-blur-sm shadow-sm" : "bg-transparent"
+        showDark ? "bg-white shadow-sm" : "bg-transparent"
       }`}
     >
       <div className="max-w-[1460px] mx-auto px-[30px]">

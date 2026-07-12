@@ -53,7 +53,7 @@ export default function Hero() {
         shape="wave"
         speed={reduceMotion || !inView ? 0 : 0.15}
         minPixelRatio={1}
-        maxPixelCount={1920 * 1080}
+        maxPixelCount={1024 * 640}
       />
       {/* Contrast scrim so text stays readable over brighter drifts */}
       <div className="absolute inset-0 bg-navy-blue/40 pointer-events-none" />
