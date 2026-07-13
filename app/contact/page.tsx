@@ -21,6 +21,7 @@ export default function ContactPage() {
         eyebrow="Contact"
         title="Get in touch"
         lead="Whether you are a patient, health worker, researcher, or organization, we want to hear from you."
+        breadcrumbs={[{ name: "Contact", path: "/contact" }]}
       />
 
       {/* Content */}

@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
 import CauseCard from "@/components/cards/CauseCard";
 import CTASection from "@/components/sections/CTASection";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Our Programs",
+export const metadata: Metadata = pageMetadata({
+  title: "Our Programs — Patient Safety Initiatives in Tanzania",
   description:
     "Six strategic pillars guide PSA Tanzania's work: patient empowerment, evidence generation, policy advocacy, capacity building, accountability, and youth leadership.",
-};
+  path: "/causes",
+});
 import PageHero from "@/components/sections/PageHero";
 import AnimateIn from "@/components/ui/AnimateIn";
 import { causes } from "@/data/causes";
@@ -18,6 +20,7 @@ export default function CausesPage() {
         eyebrow="Our Programs"
         title="Six pillars of change"
         lead="Our work is structured around six strategic pillars that guide everything from community programs to national policy advocacy."
+        breadcrumbs={[{ name: "Programs", path: "/causes" }]}
       />
 
       <section className="py-[60px] lg:py-[100px]">

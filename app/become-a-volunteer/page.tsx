@@ -18,6 +18,7 @@ export default function BecomeAVolunteerPage() {
         eyebrow="Get Involved"
         title="Become a volunteer"
         lead="Join PSA Tanzania and use your skills to build a safer healthcare system for every patient."
+        breadcrumbs={[{ name: "Become a Volunteer", path: "/become-a-volunteer" }]}
       />
 
       <section className="py-[60px] lg:py-[100px] bg-ice-blue">

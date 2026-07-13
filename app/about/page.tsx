@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
 import CTASection from "@/components/sections/CTASection";
 import PageHero from "@/components/sections/PageHero";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "About Us",
+export const metadata: Metadata = pageMetadata({
+  title: "About Us — Our Mission for Patient Safety in Tanzania",
   description:
     "Patient Safety Alliance Tanzania is a youth-led movement reducing preventable harm and building a health system where every patient is treated with safety, dignity, and respect.",
-};
+  path: "/about",
+});
 import CounterCard from "@/components/cards/CounterCard";
 import StickyValueStack from "@/components/sections/StickyValueStack";
 import AnimateIn from "@/components/ui/AnimateIn";
@@ -25,6 +27,7 @@ export default function AboutPage() {
         eyebrow="About PSA Tanzania"
         title="A youth-led movement for safer care"
         lead="Patient Safety Alliance Tanzania is dedicated to reducing preventable harm and building a health system where every patient is treated with safety, dignity, and respect."
+        breadcrumbs={[{ name: "About", path: "/about" }]}
       />
 
       {/* Stats */}

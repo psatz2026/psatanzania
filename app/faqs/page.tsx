@@ -1,12 +1,15 @@
 import type { Metadata } from "next";
 import Accordion from "@/components/ui/Accordion";
 import CTASection from "@/components/sections/CTASection";
+import JsonLd from "@/components/seo/JsonLd";
+import { pageMetadata, faqPageJsonLd } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "FAQs",
+export const metadata: Metadata = pageMetadata({
+  title: "FAQs — Patient Safety & Volunteering Questions Answered",
   description:
     "Answers to common questions about Patient Safety Alliance Tanzania — who we are, what we do, and how to get involved.",
-};
+  path: "/faqs",
+});
 import PageHero from "@/components/sections/PageHero";
 import AnimateIn from "@/components/ui/AnimateIn";
 import { faqs } from "@/data/faqs";
@@ -16,10 +19,12 @@ export default function FAQsPage() {
 
   return (
     <>
+      <JsonLd data={faqPageJsonLd(faqs)} />
       <PageHero
         eyebrow="FAQs"
         title="Frequently asked questions"
         lead="Answers to the questions we hear most from patients, volunteers, and partners."
+        breadcrumbs={[{ name: "FAQs", path: "/faqs" }]}
       />
 
       <section className="py-[60px] lg:py-[100px]">

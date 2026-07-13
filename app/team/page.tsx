@@ -1,23 +1,38 @@
 import type { Metadata } from "next";
 import VolunteerCard from "@/components/cards/VolunteerCard";
 import PageHero from "@/components/sections/PageHero";
+import JsonLd from "@/components/seo/JsonLd";
+import { pageMetadata } from "@/lib/seo";
+import { SITE_URL } from "@/lib/site";
 
-export const metadata: Metadata = {
-  title: "Our Team",
+export const metadata: Metadata = pageMetadata({
+  title: "Our Team — Leadership & Patient Safety Advocates",
   description:
     "Meet the leadership and members of Patient Safety Alliance Tanzania — advocates, researchers, and health champions working for safer care.",
-};
+  path: "/team",
+});
 import Button from "@/components/ui/Button";
 import AnimateIn from "@/components/ui/AnimateIn";
 import { leadership, members } from "@/data/volunteers";
 
+const teamJsonLd = [...leadership, ...members].map((v) => ({
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: v.name,
+  jobTitle: v.role,
+  image: `${SITE_URL}${v.image}`,
+  worksFor: { "@id": `${SITE_URL}/#organization` },
+}));
+
 export default function TeamPage() {
   return (
     <>
+      <JsonLd data={teamJsonLd} />
       <PageHero
         eyebrow="Our Team"
         title="The people behind PSA Tanzania"
         lead="A passionate, youth-led team of advocates, researchers, and health champions working together to make healthcare safer for every patient in Tanzania."
+        breadcrumbs={[{ name: "Team", path: "/team" }]}
       />
 
       <section className="py-[60px] lg:py-[100px]">

@@ -65,7 +65,7 @@ export default function Navigation() {
           >
             {showDark ? (
               <Image
-                src="/2.png"
+                src="/psa-tanzania-logo-full.png"
                 alt="Patient Safety Alliance Tanzania"
                 width={120}
                 height={60}
@@ -75,7 +75,7 @@ export default function Navigation() {
             ) : (
               <span className="flex items-center justify-center w-[42px] h-[42px] lg:w-[52px] lg:h-[52px] rounded-full bg-white shadow-sm">
                 <Image
-                  src="/1.png"
+                  src="/psa-tanzania-logo-icon.png"
                   alt="Patient Safety Alliance Tanzania"
                   width={34}
                   height={34}
@@ -92,6 +92,7 @@ export default function Navigation() {
               <Link
                 key={link.href}
                 href={link.href}
+                aria-current={pathname === link.href ? "page" : undefined}
                 className={`group relative font-body text-[15px] font-medium transition-colors duration-200 ${
                   pathname === link.href
                     ? "text-sky-blue"
@@ -167,6 +168,7 @@ export default function Navigation() {
                 <Link
                   key={link.href}
                   href={link.href}
+                  aria-current={pathname === link.href ? "page" : undefined}
                   className={`font-body text-[17px] font-medium py-3 border-b border-carbon-black-5 transition-colors ${
                     pathname === link.href ? "text-sky-blue" : "text-carbon-black hover:text-sky-blue"
                   }`}

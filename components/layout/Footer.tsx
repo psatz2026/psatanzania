@@ -28,7 +28,7 @@ export default function Footer() {
             <Link href="/" className="inline-flex items-center gap-4">
               <span className="flex items-center justify-center w-[52px] h-[52px] rounded-full bg-white shadow-sm flex-shrink-0">
                 <Image
-                  src="/1.png"
+                  src="/psa-tanzania-logo-icon.png"
                   alt="Patient Safety Alliance Tanzania"
                   width={34}
                   height={34}
