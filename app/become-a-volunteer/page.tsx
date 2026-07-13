@@ -87,20 +87,20 @@ export default function BecomeAVolunteerPage() {
                       ].map((field) => (
                         <div key={field.id} className="flex flex-col gap-2">
                           <label htmlFor={field.id} className="font-body text-[14px] font-medium text-carbon-black">{field.label}</label>
-                          <input id={field.id} name={field.id} type={field.type} placeholder={field.placeholder} className="font-body text-[16px] px-4 py-3 border border-steel-gray/20 rounded-xl bg-ice-blue focus:outline-none focus:ring-2 focus:ring-sky-blue/40 placeholder:text-steel-gray/40" />
+                          <input id={field.id} name={field.id} type={field.type} placeholder={field.placeholder} className="font-body text-[16px] text-carbon-black w-full px-4 py-3 rounded-lg border border-steel-gray/25 bg-white focus:outline-none focus:border-sky-blue transition-colors placeholder:text-steel-gray/40" />
                         </div>
                       ))}
                     </div>
                     <div className="flex flex-col gap-2">
                       <label htmlFor="role" className="font-body text-[14px] font-medium text-carbon-black">Preferred role</label>
-                      <select id="role" name="role" required className="font-body text-[16px] px-4 py-3 border border-steel-gray/20 rounded-xl bg-ice-blue focus:outline-none focus:ring-2 focus:ring-sky-blue/40 text-carbon-black">
+                      <select id="role" name="role" required className="font-body text-[16px] text-carbon-black w-full px-4 py-3 rounded-lg border border-steel-gray/25 bg-white focus:outline-none focus:border-sky-blue transition-colors text-carbon-black">
                         <option value="">Select a role...</option>
                         {roles.map((r) => <option key={r} value={r}>{r}</option>)}
                       </select>
                     </div>
                     <div className="flex flex-col gap-2">
                       <label htmlFor="motivation" className="font-body text-[14px] font-medium text-carbon-black">Why do you want to volunteer?</label>
-                      <textarea id="motivation" name="motivation" rows={5} required placeholder="Tell us what motivates you..." className="font-body text-[16px] px-4 py-3 border border-steel-gray/20 rounded-xl bg-ice-blue focus:outline-none focus:ring-2 focus:ring-sky-blue/40 placeholder:text-steel-gray/40 resize-none" />
+                      <textarea id="motivation" name="motivation" rows={5} required placeholder="Tell us what motivates you..." className="font-body text-[16px] text-carbon-black w-full px-4 py-3 rounded-lg border border-steel-gray/25 bg-white focus:outline-none focus:border-sky-blue transition-colors placeholder:text-steel-gray/40 resize-none" />
                     </div>
                     {error && (
                       <p className="font-body text-[14px] text-red-600">{error}</p>
