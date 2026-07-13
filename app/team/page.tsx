@@ -21,7 +21,7 @@ export default function TeamPage() {
       />
 
       <section className="py-[60px] lg:py-[100px]">
-        <div className="max-w-[1460px] mx-auto px-[30px] flex flex-col gap-16 lg:gap-20">
+        <div className="max-w-[1460px] mx-auto px-5 sm:px-[30px] flex flex-col gap-16 lg:gap-20">
 
           {/* Leadership */}
           <div className="flex flex-col gap-8">

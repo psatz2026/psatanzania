@@ -21,7 +21,7 @@ export default function CausesPage() {
       />
 
       <section className="py-[60px] lg:py-[100px]">
-        <div className="max-w-[1460px] mx-auto px-[30px]">
+        <div className="max-w-[1460px] mx-auto px-5 sm:px-[30px]">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {causes.map((cause, i) => (
               <AnimateIn key={cause.slug} delay={i * 0.08}>

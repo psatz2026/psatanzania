@@ -89,7 +89,7 @@ const avatars = [
 export default function StickyValueStack() {
   return (
     <section className="overflow-x-clip pt-[80px] lg:pt-[140px]">
-      <div className="max-w-[1460px] mx-auto px-[30px] pb-[80px] lg:pb-[140px]">
+      <div className="max-w-[1460px] mx-auto px-5 sm:px-[30px] pb-[80px] lg:pb-[140px]">
 
         {/* Desktop — sticky left + stacking value cards */}
         <div className="hidden lg:flex gap-[80px]">
@@ -162,8 +162,8 @@ export default function StickyValueStack() {
             </Link>
           </div>
           {/* Horizontal snap carousel — swipe through the values */}
-          <div className="-mx-[30px]">
-            <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory px-[30px] pb-3 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+          <div className="-mx-5 sm:-mx-[30px]">
+            <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory px-5 sm:px-[30px] pb-3 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
               {values.map((value, i) => (
                 <div
                   key={i}
@@ -177,7 +177,7 @@ export default function StickyValueStack() {
                 </div>
               ))}
             </div>
-            <p className="mt-3 px-[30px] font-body text-[13px] text-steel-gray/60">
+            <p className="mt-3 px-5 sm:px-[30px] font-body text-[13px] text-steel-gray/60">
               Swipe to explore our {values.length} core values
             </p>
           </div>

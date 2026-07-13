@@ -31,7 +31,7 @@ export default async function CauseDetailPage({
   return (
     <>
       <section className="bg-navy-blue pt-[130px] lg:pt-[170px] pb-[60px] lg:pb-[90px]">
-        <div className="max-w-[1460px] mx-auto px-[30px]">
+        <div className="max-w-[1460px] mx-auto px-5 sm:px-[30px]">
           <Button label="← All programs" href="/causes" variant="ghost" className="!text-white/60 hover:!text-white mb-8 !px-0" />
           <div className="mb-4"><Badge label={cause.category} variant="blue" /></div>
           <h1 className="font-heading text-[clamp(36px,6vw,68px)] leading-[1.08] max-w-[820px] text-white">{cause.title}</h1>
@@ -42,7 +42,7 @@ export default async function CauseDetailPage({
       </section>
 
       <section className="py-[56px] lg:py-[80px]">
-        <div className="max-w-[1460px] mx-auto px-[30px]">
+        <div className="max-w-[1460px] mx-auto px-5 sm:px-[30px]">
           <div className="flex flex-col lg:flex-row gap-16">
             <div className="lg:w-[60%] flex flex-col gap-8">
               <div className="relative h-[400px] rounded-2xl overflow-hidden">

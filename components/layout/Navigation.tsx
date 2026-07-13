@@ -45,7 +45,7 @@ export default function Navigation() {
         showDark ? "bg-white shadow-sm" : "bg-transparent"
       }`}
     >
-      <div className="max-w-[1460px] mx-auto px-[30px]">
+      <div className="max-w-[1460px] mx-auto px-5 sm:px-[30px]">
         <div
           className={`flex items-center justify-between transition-[height] duration-300 ${
             scrolled ? "h-[60px] lg:h-[66px]" : "h-[70px] lg:h-[84px]"
@@ -162,7 +162,7 @@ export default function Navigation() {
             transition={{ duration: 0.2 }}
             className="lg:hidden bg-white border-t border-carbon-black-5 shadow-xl"
           >
-            <div className="max-w-[1460px] mx-auto px-[30px] py-6 flex flex-col gap-1">
+            <div className="max-w-[1460px] mx-auto px-5 sm:px-[30px] py-6 flex flex-col gap-1">
               {navLinks.map((link) => (
                 <Link
                   key={link.href}

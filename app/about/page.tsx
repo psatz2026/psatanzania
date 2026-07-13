@@ -29,7 +29,7 @@ export default function AboutPage() {
 
       {/* Stats */}
       <section className="py-[56px] lg:py-[80px] bg-ice-blue">
-        <div className="max-w-[1460px] mx-auto px-[30px]">
+        <div className="max-w-[1460px] mx-auto px-5 sm:px-[30px]">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-10">
             {stats.map((s, i) => (
               <AnimateIn key={s.label} delay={i * 0.1}>

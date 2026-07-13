@@ -23,7 +23,7 @@ export default function FAQsPage() {
       />
 
       <section className="py-[60px] lg:py-[100px]">
-        <div className="max-w-[1460px] mx-auto px-[30px]">
+        <div className="max-w-[1460px] mx-auto px-5 sm:px-[30px]">
           <div className="max-w-[800px] mx-auto flex flex-col gap-14">
             {categories.map((category, i) => (
               <AnimateIn key={category} delay={i * 0.08}>
