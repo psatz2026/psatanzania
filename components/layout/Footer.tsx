@@ -21,7 +21,7 @@ const footerLinks = {
 export default function Footer() {
   return (
     <footer className="bg-navy-blue text-white">
-      <div className="max-w-[1460px] mx-auto px-[30px] py-[80px]">
+      <div className="max-w-[1460px] mx-auto px-5 sm:px-[30px] py-[80px]">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12">
           {/* Brand Column */}
           <div className="lg:col-span-2 flex flex-col gap-6">

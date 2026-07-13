@@ -62,9 +62,9 @@ export default function MissionSection() {
 
   return (
     <section className="py-[80px] lg:py-[140px]">
-      <div className="max-w-[1460px] mx-auto px-[30px]">
+      <div className="max-w-[1460px] mx-auto px-5 sm:px-[30px]">
         <div className="bg-navy-blue rounded-2xl overflow-hidden">
-          <div className="p-[40px] lg:p-[80px] xl:p-[100px]">
+          <div className="p-6 sm:p-[40px] lg:p-[80px] xl:p-[100px]">
             <div className="flex flex-col gap-14">
               {/* Header */}
               <AnimateIn className="flex flex-col gap-4 max-w-[700px] mx-auto text-center">

@@ -29,7 +29,7 @@ export default async function LegalPage({
 
   return (
     <section className="pt-[130px] lg:pt-[170px] pb-[60px] lg:pb-[90px]">
-      <div className="max-w-[800px] mx-auto px-[30px]">
+      <div className="max-w-[800px] mx-auto px-5 sm:px-[30px]">
         <h1 className="font-heading text-[46px] leading-[1.1] text-navy-blue mb-4">{page.title}</h1>
         {page.lastUpdated && (
           <p className="font-body text-[14px] text-steel-gray mb-12">

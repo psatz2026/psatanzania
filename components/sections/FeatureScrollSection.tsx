@@ -63,7 +63,7 @@ const features = [
 export default function FeatureScrollSection() {
   return (
     <section className="overflow-x-clip pt-[80px] lg:pt-[140px]">
-      <div className="max-w-[1460px] mx-auto px-[30px] pb-[80px] lg:pb-[140px]">
+      <div className="max-w-[1460px] mx-auto px-5 sm:px-[30px] pb-[80px] lg:pb-[140px]">
 
         {/* Desktop — sticky left + stacking cards (mirrors Framer exactly) */}
         <div className="hidden lg:flex gap-[80px]">
@@ -85,7 +85,7 @@ export default function FeatureScrollSection() {
             Ways to get involved
           </h2>
           {features.map((feature, i) => (
-            <div key={i} className="bg-white rounded-2xl border border-sky-blue/20 shadow-[0_2px_16px_rgba(27,56,136,0.07)] p-8 flex flex-col gap-5">
+            <div key={i} className="bg-white rounded-2xl border border-sky-blue/20 shadow-[0_2px_16px_rgba(27,56,136,0.07)] p-6 flex flex-col gap-5">
               <div className="w-14 h-14 rounded-full bg-ice-blue flex items-center justify-center text-sky-blue">
                 {feature.icon}
               </div>

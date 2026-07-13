@@ -19,7 +19,7 @@ export default function PageHero({
     <section
       className={`${navy ? "bg-navy-blue" : "bg-ice-blue"} pt-[130px] lg:pt-[170px] pb-[60px] lg:pb-[90px]`}
     >
-      <div className="max-w-[1460px] mx-auto px-[30px]">
+      <div className="max-w-[1460px] mx-auto px-5 sm:px-[30px]">
         <AnimateIn y={16}>
           <p
             className={`font-body text-[13px] font-medium tracking-[0.2em] uppercase mb-6 ${

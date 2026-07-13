@@ -23,7 +23,7 @@ export default function ContactPage() {
 
       {/* Content */}
       <section className="py-[60px] lg:py-[100px] bg-ice-blue">
-        <div className="max-w-[1460px] mx-auto px-[30px]">
+        <div className="max-w-[1460px] mx-auto px-5 sm:px-[30px]">
           <div className="flex flex-col lg:flex-row gap-10">
 
             {/* Left: contact details */}
@@ -54,7 +54,7 @@ export default function ContactPage() {
 
             {/* Right: form */}
             <div className="flex-1 min-w-0">
-              <div className="bg-white rounded-2xl p-8 lg:p-10 shadow-sm">
+              <div className="bg-white rounded-2xl p-5 sm:p-8 lg:p-10 shadow-sm">
                 {submitted ? (
                   <div className="flex flex-col gap-4 items-center text-center py-10">
                     <div className="w-14 h-14 rounded-full bg-sky-blue flex items-center justify-center">

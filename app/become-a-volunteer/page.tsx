@@ -19,7 +19,7 @@ export default function BecomeAVolunteerPage() {
       />
 
       <section className="py-[60px] lg:py-[100px] bg-ice-blue">
-        <div className="max-w-[1460px] mx-auto px-[30px]">
+        <div className="max-w-[1460px] mx-auto px-5 sm:px-[30px]">
           <div className="flex flex-col lg:flex-row gap-16">
             {/* Why volunteer */}
             <div className="lg:w-[35%] flex flex-col gap-8">
@@ -45,7 +45,7 @@ export default function BecomeAVolunteerPage() {
                   <p className="font-body text-[16px] text-steel-gray">Thank you for applying. We will review your application and be in touch shortly.</p>
                 </div>
               ) : (
-                <div className="bg-white rounded-2xl p-8 lg:p-10 shadow-sm">
+                <div className="bg-white rounded-2xl p-5 sm:p-8 lg:p-10 shadow-sm">
                   <form onSubmit={(e) => { e.preventDefault(); setSubmitted(true); }} className="flex flex-col gap-6">
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                       {[

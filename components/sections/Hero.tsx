@@ -57,7 +57,7 @@ export default function Hero() {
       />
       {/* Contrast scrim so text stays readable over brighter drifts */}
       <div className="absolute inset-0 bg-navy-blue/40 pointer-events-none" />
-      <div className="relative max-w-[1460px] w-full mx-auto px-[30px] pt-[110px] pb-[70px]">
+      <div className="relative max-w-[1460px] w-full mx-auto px-5 sm:px-[30px] pt-[110px] pb-[70px]">
 
         {/* Headline — top left */}
         <motion.h1
