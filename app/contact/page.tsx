@@ -12,6 +12,8 @@ const labelClass = "font-body text-[14px] font-medium text-carbon-black mb-1.5 b
 
 export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   return (
     <>
@@ -66,27 +68,55 @@ export default function ContactPage() {
                     <p className="font-body text-[16px] text-steel-gray">Thank you for reaching out. We will get back to you within 2 business days.</p>
                   </div>
                 ) : (
-                  <form onSubmit={(e) => { e.preventDefault(); setSubmitted(true); }} className="flex flex-col gap-6">
+                  <form
+                    onSubmit={async (e) => {
+                      e.preventDefault();
+                      setError(null);
+                      setSubmitting(true);
+                      const form = e.currentTarget;
+                      const data = new FormData(form);
+                      try {
+                        const res = await fetch("/api/contact", {
+                          method: "POST",
+                          headers: { "Content-Type": "application/json" },
+                          body: JSON.stringify({
+                            name: data.get("name"),
+                            email: data.get("email"),
+                            subject: data.get("subject"),
+                            message: data.get("message"),
+                          }),
+                        });
+                        if (!res.ok) throw new Error("Failed to send message");
+                        setSubmitted(true);
+                      } catch {
+                        setError("Something went wrong. Please try again.");
+                      } finally {
+                        setSubmitting(false);
+                      }
+                    }}
+                    className="flex flex-col gap-6"
+                  >
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                       <div>
                         <label htmlFor="name" className={labelClass}>Full name</label>
-                        <input id="name" type="text" placeholder="Your name" required className={inputClass} />
+                        <input id="name" name="name" type="text" placeholder="Your name" required className={inputClass} />
                       </div>
                       <div>
                         <label htmlFor="email" className={labelClass}>Email address</label>
-                        <input id="email" type="email" placeholder="your@email.com" required className={inputClass} />
+                        <input id="email" name="email" type="email" placeholder="your@email.com" required className={inputClass} />
                       </div>
                     </div>
 
                     <div>
                       <label htmlFor="subject" className={labelClass}>Subject</label>
-                      <input id="subject" type="text" placeholder="How can we help?" required className={inputClass} />
+                      <input id="subject" name="subject" type="text" placeholder="How can we help?" required className={inputClass} />
                     </div>
 
                     <div>
                       <label htmlFor="message" className={labelClass}>Message</label>
                       <textarea
                         id="message"
+                        name="message"
                         rows={6}
                         placeholder="Your message..."
                         required
@@ -94,8 +124,12 @@ export default function ContactPage() {
                       />
                     </div>
 
+                    {error && (
+                      <p className="font-body text-[14px] text-red-600">{error}</p>
+                    )}
+
                     <div>
-                      <Button label="Send message" type="submit" variant="primary" />
+                      <Button label={submitting ? "Sending..." : "Send message"} type="submit" variant="primary" />
                     </div>
                   </form>
                 )}

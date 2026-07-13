@@ -8,4 +8,4 @@ export const transporter = nodemailer.createTransport({
   },
 });
 
-export const TO = "psatz2026@gmail.com";
+export const TO = process.env.GMAIL_RECIPIENT;

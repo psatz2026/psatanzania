@@ -9,6 +9,8 @@ const roles = ["Community Health Champion", "Patient Advocate", "Program Volunte
 
 export default function BecomeAVolunteerPage() {
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   return (
     <>
@@ -46,7 +48,36 @@ export default function BecomeAVolunteerPage() {
                 </div>
               ) : (
                 <div className="bg-white rounded-2xl p-8 lg:p-10 shadow-sm">
-                  <form onSubmit={(e) => { e.preventDefault(); setSubmitted(true); }} className="flex flex-col gap-6">
+                  <form
+                    onSubmit={async (e) => {
+                      e.preventDefault();
+                      setError(null);
+                      setSubmitting(true);
+                      const form = e.currentTarget;
+                      const data = new FormData(form);
+                      try {
+                        const res = await fetch("/api/volunteer", {
+                          method: "POST",
+                          headers: { "Content-Type": "application/json" },
+                          body: JSON.stringify({
+                            name: data.get("name"),
+                            email: data.get("email"),
+                            phone: data.get("phone"),
+                            location: data.get("location"),
+                            role: data.get("role"),
+                            motivation: data.get("motivation"),
+                          }),
+                        });
+                        if (!res.ok) throw new Error("Failed to submit application");
+                        setSubmitted(true);
+                      } catch {
+                        setError("Something went wrong. Please try again.");
+                      } finally {
+                        setSubmitting(false);
+                      }
+                    }}
+                    className="flex flex-col gap-6"
+                  >
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                       {[
                         { id: "name", label: "Full name", type: "text", placeholder: "Your name" },
@@ -56,22 +87,25 @@ export default function BecomeAVolunteerPage() {
                       ].map((field) => (
                         <div key={field.id} className="flex flex-col gap-2">
                           <label htmlFor={field.id} className="font-body text-[14px] font-medium text-carbon-black">{field.label}</label>
-                          <input id={field.id} type={field.type} placeholder={field.placeholder} className="font-body text-[16px] px-4 py-3 border border-steel-gray/20 rounded-xl bg-ice-blue focus:outline-none focus:ring-2 focus:ring-sky-blue/40 placeholder:text-steel-gray/40" />
+                          <input id={field.id} name={field.id} type={field.type} placeholder={field.placeholder} className="font-body text-[16px] px-4 py-3 border border-steel-gray/20 rounded-xl bg-ice-blue focus:outline-none focus:ring-2 focus:ring-sky-blue/40 placeholder:text-steel-gray/40" />
                         </div>
                       ))}
                     </div>
                     <div className="flex flex-col gap-2">
                       <label htmlFor="role" className="font-body text-[14px] font-medium text-carbon-black">Preferred role</label>
-                      <select id="role" required className="font-body text-[16px] px-4 py-3 border border-steel-gray/20 rounded-xl bg-ice-blue focus:outline-none focus:ring-2 focus:ring-sky-blue/40 text-carbon-black">
+                      <select id="role" name="role" required className="font-body text-[16px] px-4 py-3 border border-steel-gray/20 rounded-xl bg-ice-blue focus:outline-none focus:ring-2 focus:ring-sky-blue/40 text-carbon-black">
                         <option value="">Select a role...</option>
                         {roles.map((r) => <option key={r} value={r}>{r}</option>)}
                       </select>
                     </div>
                     <div className="flex flex-col gap-2">
                       <label htmlFor="motivation" className="font-body text-[14px] font-medium text-carbon-black">Why do you want to volunteer?</label>
-                      <textarea id="motivation" rows={5} required placeholder="Tell us what motivates you..." className="font-body text-[16px] px-4 py-3 border border-steel-gray/20 rounded-xl bg-ice-blue focus:outline-none focus:ring-2 focus:ring-sky-blue/40 placeholder:text-steel-gray/40 resize-none" />
+                      <textarea id="motivation" name="motivation" rows={5} required placeholder="Tell us what motivates you..." className="font-body text-[16px] px-4 py-3 border border-steel-gray/20 rounded-xl bg-ice-blue focus:outline-none focus:ring-2 focus:ring-sky-blue/40 placeholder:text-steel-gray/40 resize-none" />
                     </div>
-                    <Button label="Submit application" type="submit" variant="primary" />
+                    {error && (
+                      <p className="font-body text-[14px] text-red-600">{error}</p>
+                    )}
+                    <Button label={submitting ? "Submitting..." : "Submit application"} type="submit" variant="primary" />
                   </form>
                 </div>
               )}
