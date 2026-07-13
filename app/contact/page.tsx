@@ -32,8 +32,8 @@ export default function ContactPage() {
               <div className="bg-white rounded-2xl p-8 flex flex-col gap-7 shadow-sm">
                 <div className="flex flex-col gap-1.5">
                   <span className="font-body text-[12px] font-medium uppercase tracking-widest text-steel-gray/50">Email</span>
-                  <a href="mailto:psatz2026@gmail.com" className="font-body text-[16px] text-carbon-black hover:text-sky-blue transition-colors break-all">
-                    psatz2026@gmail.com
+                  <a href="mailto:info@psatanzania.org" className="font-body text-[16px] text-carbon-black hover:text-sky-blue transition-colors break-all">
+                    info@psatanzania.org
                   </a>
                 </div>
 
