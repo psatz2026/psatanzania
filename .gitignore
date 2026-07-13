@@ -45,3 +45,7 @@ next-env.d.ts
 
 # QA screenshots
 /screenshots
+
+# internal documents and local captures — never publish
+*.docx
+Screenshot*.png
