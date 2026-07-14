@@ -53,21 +53,19 @@ export default function BecomeAVolunteerPage() {
                     onSubmit={async (e) => {
                       e.preventDefault();
                       setError(null);
-                      setSubmitting(true);
                       const form = e.currentTarget;
                       const data = new FormData(form);
+                      const cv = data.get("cv");
+                      if (cv instanceof File && cv.size > 4 * 1024 * 1024) {
+                        setError("CV file must be 4MB or smaller.");
+                        return;
+                      }
+                      setSubmitting(true);
                       try {
+                        /* multipart FormData — browser sets the boundary header */
                         const res = await fetch("/api/volunteer", {
                           method: "POST",
-                          headers: { "Content-Type": "application/json" },
-                          body: JSON.stringify({
-                            name: data.get("name"),
-                            email: data.get("email"),
-                            phone: data.get("phone"),
-                            location: data.get("location"),
-                            role: data.get("role"),
-                            motivation: data.get("motivation"),
-                          }),
+                          body: data,
                         });
                         if (!res.ok) throw new Error("Failed to submit application");
                         setSubmitted(true);
@@ -98,6 +96,18 @@ export default function BecomeAVolunteerPage() {
                         <option value="">Select a role...</option>
                         {roles.map((r) => <option key={r} value={r}>{r}</option>)}
                       </select>
+                    </div>
+                    <div className="flex flex-col gap-2">
+                      <label htmlFor="cv" className="font-body text-[14px] font-medium text-carbon-black">CV / Resume</label>
+                      <input
+                        id="cv"
+                        name="cv"
+                        type="file"
+                        accept=".pdf,.doc,.docx"
+                        required
+                        className="font-body text-[14px] text-steel-gray w-full rounded-lg border border-steel-gray/25 bg-white p-2 cursor-pointer file:mr-4 file:py-2 file:px-5 file:rounded-full file:border-0 file:bg-ice-blue file:font-body file:font-medium file:text-[14px] file:text-sky-blue file:cursor-pointer hover:file:bg-sky-blue hover:file:text-white file:transition-colors"
+                      />
+                      <p className="font-body text-[13px] text-steel-gray/70">PDF or Word document, up to 4MB.</p>
                     </div>
                     <div className="flex flex-col gap-2">
                       <label htmlFor="motivation" className="font-body text-[14px] font-medium text-carbon-black">Why do you want to volunteer?</label>
