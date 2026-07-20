@@ -78,7 +78,7 @@ export default function Navigation() {
                 showDark ? "text-carbon-black" : "text-white"
               }`}
             >
-              Patient Safety Alliance Tanzania
+              Patient Safety Alliance 
             </span>
           </Link>
 
