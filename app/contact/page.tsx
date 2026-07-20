@@ -57,9 +57,23 @@ export default function ContactPage() {
                     info@psatanzania.org
                   </a>
                 </div>
-
+ 
                 <div className="h-px bg-steel-gray/10" />
-
+ 
+                <div className="flex flex-col gap-1.5">
+                  <span className="font-body text-[12px] font-medium uppercase tracking-widest text-steel-gray/50">
+                    Phone
+                  </span>
+                  <a
+                    href="tel:+255788323232"
+                    className="font-body text-[16px] text-carbon-black hover:text-sky-blue transition-colors break-normal"
+                  >
+                    +255-788-323-232
+                  </a>
+                </div>
+ 
+                <div className="h-px bg-steel-gray/10" />
+ 
                 <div className="flex flex-col gap-1.5">
                   <span className="font-body text-[12px] font-medium uppercase tracking-widest text-steel-gray/50">
                     Location
