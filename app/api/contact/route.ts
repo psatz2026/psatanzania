@@ -1,11 +1,31 @@
 import { NextRequest, NextResponse } from "next/server";
 import { transporter, TO } from "@/lib/mailer";
 
+const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
 export async function POST(req: NextRequest) {
   const { name, email, subject, message } = await req.json();
 
-  if (!name || !email || !message) {
-    return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
+  if (!name?.trim()) {
+    return NextResponse.json({ error: "Please enter your full name." }, { status: 400 });
+  }
+  if (!email?.trim()) {
+    return NextResponse.json({ error: "Please enter your email address." }, { status: 400 });
+  }
+  if (!EMAIL_PATTERN.test(email.trim())) {
+    return NextResponse.json(
+      { error: "Please enter a valid email address (e.g. name@example.com)." },
+      { status: 400 }
+    );
+  }
+  if (!subject?.trim()) {
+    return NextResponse.json(
+      { error: "Please enter a subject for your message." },
+      { status: 400 }
+    );
+  }
+  if (!message?.trim()) {
+    return NextResponse.json({ error: "Please enter your message." }, { status: 400 });
   }
 
   try {

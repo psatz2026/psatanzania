@@ -55,7 +55,7 @@ export default function Navigation() {
           {/* Logo */}
           <Link
             href="/"
-            className="flex-shrink-0"
+            className="inline-flex items-center gap-3 sm:gap-4 flex-shrink-0"
             onClick={(e) => {
               if (pathname === "/") {
                 e.preventDefault();
@@ -63,27 +63,23 @@ export default function Navigation() {
               }
             }}
           >
-            {showDark ? (
+            <span className="flex items-center justify-center w-[42px] h-[42px] lg:w-[52px] lg:h-[52px] rounded-full bg-white shadow-sm flex-shrink-0">
               <Image
-                src="/psa-tanzania-logo-full.png"
-                alt="Patient Safety Alliance Tanzania"
-                width={120}
-                height={60}
-                className="h-[40px] lg:h-[48px] w-auto object-contain"
+                src="/psa-tanzania-logo-icon.png"
+                alt=""
+                width={34}
+                height={34}
+                className="w-[26px] h-[26px] lg:w-[34px] lg:h-[34px] object-contain"
                 priority
               />
-            ) : (
-              <span className="flex items-center justify-center w-[42px] h-[42px] lg:w-[52px] lg:h-[52px] rounded-full bg-white shadow-sm">
-                <Image
-                  src="/psa-tanzania-logo-icon.png"
-                  alt="Patient Safety Alliance Tanzania"
-                  width={34}
-                  height={34}
-                  className="w-[26px] h-[26px] lg:w-[34px] lg:h-[34px] object-contain"
-                  priority
-                />
-              </span>
-            )}
+            </span>
+            <span
+              className={`font-heading text-[13px] lg:text-[15px] leading-[1.3] max-w-[140px] lg:max-w-[160px] ${
+                showDark ? "text-carbon-black" : "text-white"
+              }`}
+            >
+              Patient Safety Alliance Tanzania
+            </span>
           </Link>
 
           {/* Desktop Nav Links */}

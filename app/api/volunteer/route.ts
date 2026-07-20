@@ -14,20 +14,41 @@ export async function POST(req: NextRequest) {
   const motivation = data.get("motivation") as string | null;
   const cv = data.get("cv");
 
-  if (!name || !email || !role || !motivation) {
-    return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
+  if (!name?.trim()) {
+    return NextResponse.json({ error: "Please enter your full name." }, { status: 400 });
+  }
+  if (!email?.trim()) {
+    return NextResponse.json({ error: "Please enter your email address." }, { status: 400 });
+  }
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim())) {
+    return NextResponse.json(
+      { error: "Please enter a valid email address (e.g. name@example.com)." },
+      { status: 400 }
+    );
+  }
+  if (!role?.trim()) {
+    return NextResponse.json({ error: "Please select a preferred role." }, { status: 400 });
+  }
+  if (!motivation?.trim()) {
+    return NextResponse.json(
+      { error: "Please tell us why you want to volunteer." },
+      { status: 400 }
+    );
   }
 
   if (!(cv instanceof File) || cv.size === 0) {
-    return NextResponse.json({ error: "CV is required" }, { status: 400 });
+    return NextResponse.json({ error: "Please upload your CV or resume." }, { status: 400 });
   }
   if (cv.size > MAX_CV_BYTES) {
-    return NextResponse.json({ error: "CV must be 4MB or smaller" }, { status: 400 });
+    return NextResponse.json(
+      { error: "Your CV must be 4MB or smaller. Please choose a smaller file." },
+      { status: 400 }
+    );
   }
   const lower = cv.name.toLowerCase();
   if (!ALLOWED_CV_EXTENSIONS.some((ext) => lower.endsWith(ext))) {
     return NextResponse.json(
-      { error: "CV must be a PDF or Word document" },
+      { error: "Please upload a PDF or Word document (.pdf, .doc, or .docx)." },
       { status: 400 }
     );
   }

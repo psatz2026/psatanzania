@@ -2,18 +2,35 @@
 
 import { useState } from "react";
 import Button from "@/components/ui/Button";
-import AnimateIn from "@/components/ui/AnimateIn";
 import PageHero from "@/components/sections/PageHero";
-
-const inputClass =
-  "font-body text-[16px] text-carbon-black w-full px-4 py-3 rounded-lg border border-steel-gray/25 bg-white focus:outline-none focus:border-sky-blue placeholder:text-steel-gray/40 transition-colors";
-
-const labelClass = "font-body text-[14px] font-medium text-carbon-black mb-1.5 block";
+import {
+  FormField,
+  FieldError,
+  formInputClass,
+  fieldDescribedBy,
+} from "@/components/ui/FormField";
+import {
+  validateContactForm,
+  hasFieldErrors,
+  type ContactField,
+  type FieldErrors,
+} from "@/lib/form-validation";
 
 export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+  const [formError, setFormError] = useState<string | null>(null);
+  const [fieldErrors, setFieldErrors] = useState<FieldErrors<ContactField>>({});
+
+  const clearFieldError = (field: ContactField) => {
+    if (fieldErrors[field]) {
+      setFieldErrors((prev) => {
+        const next = { ...prev };
+        delete next[field];
+        return next;
+      });
+    }
+  };
 
   return (
     <>
@@ -24,18 +41,19 @@ export default function ContactPage() {
         breadcrumbs={[{ name: "Contact", path: "/contact" }]}
       />
 
-      {/* Content */}
       <section className="py-[60px] lg:py-[100px] bg-ice-blue">
         <div className="max-w-[1460px] mx-auto px-5 sm:px-[30px]">
           <div className="flex flex-col lg:flex-row gap-10">
-
-            {/* Left: contact details */}
             <div className="lg:w-[320px] flex-shrink-0 flex flex-col gap-8 lg:sticky lg:top-[140px] self-start">
-
               <div className="bg-white rounded-2xl p-8 flex flex-col gap-7 shadow-sm">
                 <div className="flex flex-col gap-1.5">
-                  <span className="font-body text-[12px] font-medium uppercase tracking-widest text-steel-gray/50">Email</span>
-                  <a href="mailto:info@psatanzania.org" className="font-body text-[16px] text-carbon-black hover:text-sky-blue transition-colors break-all">
+                  <span className="font-body text-[12px] font-medium uppercase tracking-widest text-steel-gray/50">
+                    Email
+                  </span>
+                  <a
+                    href="mailto:info@psatanzania.org"
+                    className="font-body text-[16px] text-carbon-black hover:text-sky-blue transition-colors break-all"
+                  >
                     info@psatanzania.org
                   </a>
                 </div>
@@ -43,8 +61,12 @@ export default function ContactPage() {
                 <div className="h-px bg-steel-gray/10" />
 
                 <div className="flex flex-col gap-1.5">
-                  <span className="font-body text-[12px] font-medium uppercase tracking-widest text-steel-gray/50">Location</span>
-                  <span className="font-body text-[16px] text-carbon-black">Dar es Salaam, Tanzania</span>
+                  <span className="font-body text-[12px] font-medium uppercase tracking-widest text-steel-gray/50">
+                    Location
+                  </span>
+                  <span className="font-body text-[16px] text-carbon-black">
+                    Dar es Salaam, Tanzania
+                  </span>
                 </div>
 
                 <div className="h-px bg-steel-gray/10" />
@@ -55,27 +77,50 @@ export default function ContactPage() {
               </div>
             </div>
 
-            {/* Right: form */}
             <div className="flex-1 min-w-0">
               <div className="bg-white rounded-2xl p-5 sm:p-8 lg:p-10 shadow-sm">
                 {submitted ? (
                   <div className="flex flex-col gap-4 items-center text-center py-10">
                     <div className="w-14 h-14 rounded-full bg-sky-blue flex items-center justify-center">
-                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5">
-                        <path d="M20 6L9 17l-5-5" strokeLinecap="round" strokeLinejoin="round" />
+                      <svg
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="white"
+                        strokeWidth="2.5"
+                      >
+                        <path
+                          d="M20 6L9 17l-5-5"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
                       </svg>
                     </div>
                     <h3 className="font-heading text-[28px] text-carbon-black">Message sent</h3>
-                    <p className="font-body text-[16px] text-steel-gray">Thank you for reaching out. We will get back to you within 2 business days.</p>
+                    <p className="font-body text-[16px] text-steel-gray">
+                      Thank you for reaching out. We will get back to you within 2 business days.
+                    </p>
                   </div>
                 ) : (
                   <form
+                    noValidate
                     onSubmit={async (e) => {
                       e.preventDefault();
-                      setError(null);
-                      setSubmitting(true);
+                      setFormError(null);
+
                       const form = e.currentTarget;
                       const data = new FormData(form);
+                      const errors = validateContactForm(data);
+
+                      if (hasFieldErrors(errors)) {
+                        setFieldErrors(errors);
+                        return;
+                      }
+
+                      setFieldErrors({});
+                      setSubmitting(true);
+
                       try {
                         const res = await fetch("/api/contact", {
                           method: "POST",
@@ -87,56 +132,106 @@ export default function ContactPage() {
                             message: data.get("message"),
                           }),
                         });
-                        if (!res.ok) throw new Error("Failed to send message");
+
+                        if (!res.ok) {
+                          const body = await res.json().catch(() => ({}));
+                          throw new Error(
+                            body.error ??
+                              "We could not send your message. Please check your details and try again."
+                          );
+                        }
+
                         setSubmitted(true);
-                      } catch {
-                        setError("Something went wrong. Please try again.");
+                      } catch (err) {
+                        setFormError(
+                          err instanceof Error
+                            ? err.message
+                            : "Something went wrong. Please try again."
+                        );
                       } finally {
                         setSubmitting(false);
                       }
                     }}
                     className="flex flex-col gap-6"
                   >
+                    <p className="font-body text-[13px] text-steel-gray">
+                      Fields marked with <span className="text-red-600">*</span> are required.
+                    </p>
+
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                      <div>
-                        <label htmlFor="name" className={labelClass}>Full name</label>
-                        <input id="name" name="name" type="text" placeholder="Your name" required className={inputClass} />
-                      </div>
-                      <div>
-                        <label htmlFor="email" className={labelClass}>Email address</label>
-                        <input id="email" name="email" type="email" placeholder="your@email.com" required className={inputClass} />
-                      </div>
+                      <FormField id="name" label="Full name" required error={fieldErrors.name}>
+                        <input
+                          id="name"
+                          name="name"
+                          type="text"
+                          placeholder="Your name"
+                          className={formInputClass(!!fieldErrors.name)}
+                          aria-invalid={!!fieldErrors.name}
+                          aria-describedby={fieldDescribedBy("name", fieldErrors.name)}
+                          onChange={() => clearFieldError("name")}
+                        />
+                      </FormField>
+
+                      <FormField
+                        id="email"
+                        label="Email address"
+                        required
+                        error={fieldErrors.email}
+                      >
+                        <input
+                          id="email"
+                          name="email"
+                          type="email"
+                          placeholder="your@email.com"
+                          className={formInputClass(!!fieldErrors.email)}
+                          aria-invalid={!!fieldErrors.email}
+                          aria-describedby={fieldDescribedBy("email", fieldErrors.email)}
+                          onChange={() => clearFieldError("email")}
+                        />
+                      </FormField>
                     </div>
 
-                    <div>
-                      <label htmlFor="subject" className={labelClass}>Subject</label>
-                      <input id="subject" name="subject" type="text" placeholder="How can we help?" required className={inputClass} />
-                    </div>
+                    <FormField id="subject" label="Subject" required error={fieldErrors.subject}>
+                      <input
+                        id="subject"
+                        name="subject"
+                        type="text"
+                        placeholder="How can we help?"
+                        className={formInputClass(!!fieldErrors.subject)}
+                        aria-invalid={!!fieldErrors.subject}
+                        aria-describedby={fieldDescribedBy("subject", fieldErrors.subject)}
+                        onChange={() => clearFieldError("subject")}
+                      />
+                    </FormField>
 
-                    <div>
-                      <label htmlFor="message" className={labelClass}>Message</label>
+                    <FormField id="message" label="Message" required error={fieldErrors.message}>
                       <textarea
                         id="message"
                         name="message"
                         rows={6}
                         placeholder="Your message..."
-                        required
-                        className={`${inputClass} resize-none`}
+                        className={formInputClass(!!fieldErrors.message, "resize-none")}
+                        aria-invalid={!!fieldErrors.message}
+                        aria-describedby={fieldDescribedBy("message", fieldErrors.message)}
+                        onChange={() => clearFieldError("message")}
                       />
-                    </div>
+                    </FormField>
 
-                    {error && (
-                      <p className="font-body text-[14px] text-red-600">{error}</p>
+                    {formError && (
+                      <FieldError id="contact-form-error" message={formError} />
                     )}
 
                     <div>
-                      <Button label={submitting ? "Sending..." : "Send message"} type="submit" variant="primary" />
+                      <Button
+                        label={submitting ? "Sending..." : "Send message"}
+                        type="submit"
+                        variant="primary"
+                      />
                     </div>
                   </form>
                 )}
               </div>
             </div>
-
           </div>
         </div>
       </section>
