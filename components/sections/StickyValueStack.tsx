@@ -100,14 +100,14 @@ export default function StickyValueStack() {
           {/* Left column: mission/vision (sticky) */}
           <div className="pt-[60px] self-start">
             <div className="w-full sticky top-[80px] flex flex-col gap-8">
-              <h2 id="vision" className="font-heading text-[56px] leading-[1.1] text-carbon-black">
+              <h2 data-about-section="vision" className="font-heading text-[56px] leading-[1.1] text-carbon-black">
                 Our vision
               </h2>
               <p className="font-body text-[18px] leading-[1.7] text-steel-gray">
                 "A people-centered healthcare system where every patient, regardless of who they are, receives safe, respectful, equitable healthcare free from preventable harm."
               </p>
               <div className="border-t border-carbon-black-5 pt-6 flex flex-col gap-3">
-                <h3 id="mission" className="font-heading text-[20px] text-carbon-black">Our mission</h3>
+                <h3 data-about-section="mission" className="font-heading text-[20px] text-carbon-black">Our mission</h3>
                 <p className="font-body text-[16px] leading-[1.7] text-steel-gray">
                   To promote patient safety and patient-centered quality healthcare in Tanzania by empowering healthcare providers, patients, and communities, generating evidence, advocating for accountability, and collaborating with healthcare stakeholders to reduce preventable harm and strengthen trust in the health system.
                 </p>
@@ -211,12 +211,12 @@ export default function StickyValueStack() {
         {/* Mobile — stacked layout */}
         <div className="lg:hidden flex flex-col gap-10">
           <div className="flex flex-col gap-6">
-            <h2 id="vision" className="font-heading text-[40px] leading-[1.1] text-carbon-black">Our vision</h2>
+            <h2 data-about-section="vision" className="font-heading text-[40px] leading-[1.1] text-carbon-black">Our vision</h2>
             <p className="font-body text-[18px] leading-[1.7] text-steel-gray">
               "A people-centered healthcare system where every patient, regardless of who they are, receives safe, respectful, equitable healthcare free from preventable harm."
             </p>
             <div className="border-t border-carbon-black-5 pt-5 flex flex-col gap-2">
-              <h3 id="mission" className="font-heading text-[20px] text-carbon-black">Our mission</h3>
+              <h3 data-about-section="mission" className="font-heading text-[20px] text-carbon-black">Our mission</h3>
               <p className="font-body text-[16px] leading-[1.7] text-steel-gray">
                 To promote patient safety and patient-centered quality healthcare in Tanzania by empowering healthcare providers, patients, and communities, generating evidence, advocating for accountability, and collaborating with healthcare stakeholders to reduce preventable harm and strengthen trust in the health system.
               </p>

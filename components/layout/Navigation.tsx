@@ -12,6 +12,7 @@ const navLinks = [
   {
     label: "Who We Are",
     children: [
+      { label: "About Us", href: "/about" },
       { label: "Vision", href: "/about#vision" },
       { label: "Mission", href: "/about#mission" },
       { label: "Leadership", href: "/team" },
@@ -26,6 +27,7 @@ const darkHeroRoutes = ["/", "/about", "/causes", "/team", "/faqs", "/become-a-v
 
 export default function Navigation() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [mobileGroup, setMobileGroup] = useState<string | null>(null);
   const [scrolled, setScrolled] = useState(false);
   const [openGroup, setOpenGroup] = useState<string | null>(null);
   const pathname = usePathname();
@@ -34,13 +36,33 @@ export default function Navigation() {
   const hasDarkHero = darkHeroRoutes.includes(pathname);
   const showDark = scrolled || !hasDarkHero;
 
+  const scrollToAboutSection = (section: string) => {
+    const target = Array.from(
+      document.querySelectorAll<HTMLElement>(`[data-about-section="${section}"]`)
+    ).find((element) => element.getClientRects().length > 0);
+
+    if (!target) return;
+    lenisStore.lenis?.scrollTo(target, { offset: -100 });
+    if (!lenisStore.lenis) {
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
+
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  useEffect(() => { setMobileOpen(false); setOpenGroup(null); }, [pathname]);
+  useEffect(() => { setMobileOpen(false); setMobileGroup(null); setOpenGroup(null); }, [pathname]);
+
+  useEffect(() => {
+    if (pathname !== "/about") return;
+    const section = window.location.hash.slice(1);
+    if (section !== "vision" && section !== "mission") return;
+    const timer = window.setTimeout(() => scrollToAboutSection(section), 0);
+    return () => window.clearTimeout(timer);
+  }, [pathname]);
 
   // Close dropdown on Escape
   useEffect(() => {
@@ -162,7 +184,15 @@ export default function Navigation() {
                             <Link
                               key={child.href}
                               href={child.href}
-                              onClick={() => setOpenGroup(null)}
+                              onClick={(event) => {
+                                setOpenGroup(null);
+                                const section = child.href.split("#")[1];
+                                if (pathname === "/about" && section) {
+                                  event.preventDefault();
+                                  window.history.replaceState(null, "", child.href);
+                                  scrollToAboutSection(section);
+                                }
+                              }}
                               className="group/item flex items-center justify-between gap-4 rounded-lg px-3 py-2.5 font-body transition-[background-color,color] duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] text-carbon-black hover:bg-ice-blue hover:text-navy-blue focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-blue/50"
                             >
                               <span className="font-body text-[15px] font-medium">{child.label}</span>
@@ -202,7 +232,7 @@ export default function Navigation() {
           </nav>
 
           {/* Desktop CTA */}
-          <div className="hidden lg:flex items-center">
+           <div className="hidden lg:flex items-center">
             <Link
               href="/become-a-volunteer"
               className="group relative inline-flex items-center justify-center bg-sky-blue text-white font-body font-medium text-[15px] px-6 h-[46px] rounded-full overflow-hidden active:scale-95"
@@ -216,10 +246,14 @@ export default function Navigation() {
             </Link>
           </div>
 
+
           {/* Mobile Hamburger */}
           <button
             className="lg:hidden flex flex-col gap-[5px] p-2"
-            onClick={() => setMobileOpen((v) => !v)}
+            onClick={() => {
+              if (mobileOpen) setMobileGroup(null);
+              setMobileOpen(!mobileOpen);
+            }}
             aria-label="Toggle menu"
           >
             {[
@@ -250,23 +284,49 @@ export default function Navigation() {
           >
             <div className="max-w-[1460px] mx-auto px-5 sm:px-[30px] py-6 flex flex-col gap-1">
               {navLinks.map((link) => {
-                if ((link as any).children) {
-                  const group = link as any;
+                if ("children" in link) {
+                  const group = link as {
+                    label: string;
+                    children: { label: string; href: string }[];
+                  };
+                  const isOpen = mobileGroup === group.label;
                   return (
                     <div key={group.label} className="py-2 border-b border-carbon-black-5">
-                      <div className="font-body text-[17px] font-medium py-3 text-carbon-black">{group.label}</div>
-                      <div className="flex flex-col pl-4">
-                        {group.children.map((child: any) => (
+                      <button
+                        type="button"
+                        aria-expanded={isOpen}
+                        onClick={() => setMobileGroup(isOpen ? null : group.label)}
+                        className={`flex w-full items-center justify-between rounded-lg py-3 text-left font-body text-[17px] font-medium transition-[color,background-color,transform] duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] active:scale-[0.98] ${isOpen ? "text-navy-blue" : "text-carbon-black"}`}
+                      >
+                        <span>{group.label}</span>
+                        <svg aria-hidden viewBox="0 0 24 24" fill="none" className={`h-4 w-4 text-sky-blue transition-transform duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] ${isOpen ? "rotate-180" : "rotate-0"}`}>
+                          <path d="M6 9l6 6 6-6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                      </button>
+                      {isOpen && (
+                      <div className="flex flex-col border-l border-navy-blue/10 pl-4 pb-2">
+                        {group.children.map((child) => (
                           <Link
                             key={child.href}
                             href={child.href}
                             aria-current={pathname === child.href ? "page" : undefined}
-                            className={`font-body text-[15px] py-2 transition-colors ${pathname === child.href ? "text-sky-blue" : "text-carbon-black hover:text-sky-blue"}`}
+                            onClick={(event) => {
+                              setMobileGroup(null);
+                              setMobileOpen(false);
+                              const section = child.href.split("#")[1];
+                              if (pathname === "/about" && section) {
+                                event.preventDefault();
+                                window.history.replaceState(null, "", child.href);
+                                scrollToAboutSection(section);
+                              }
+                            }}
+                            className={`font-body text-[15px] py-2.5 transition-colors ${pathname === child.href ? "text-sky-blue" : "text-carbon-black hover:text-sky-blue"}`}
                           >
                             {child.label}
                           </Link>
                         ))}
                       </div>
+                      )}
                     </div>
                   );
                 }
@@ -284,12 +344,14 @@ export default function Navigation() {
                   </Link>
                 );
               })}
-              <Link
+
+                 <Link
                 href="/become-a-volunteer"
                 className="mt-4 inline-flex items-center justify-center bg-sky-blue text-white font-body font-medium text-[16px] px-6 py-4 rounded-full hover:bg-light-blue transition-colors"
               >
                 Get Involved
               </Link>
+
             </div>
           </motion.div>
         )}

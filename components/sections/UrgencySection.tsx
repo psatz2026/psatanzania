@@ -49,7 +49,12 @@ export default function UrgencySection() {
             </p>
 
             <div className="mt-6 flex flex-wrap gap-3">
-              <Button label="Our Programs" href="/causes" variant="white" />
+              <Button
+                label="Our Programs"
+                href="/causes"
+                variant="white"
+                className="hover:!bg-sky-blue hover:!text-white"
+              />
               <Button label="Get Involved" href="/become-a-volunteer" variant="outlined" />
             </div>
           </aside>
