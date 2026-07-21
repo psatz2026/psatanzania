@@ -18,8 +18,8 @@ export default function CausesPage() {
     <>
       <PageHero
         eyebrow="Our Programs"
-        title="Six pillars of change"
-        lead="Our work is structured around six strategic pillars that guide everything from community programs to national policy advocacy."
+          title="Featured Programs"
+          lead="Our work is structured around six programs that guide everything from community engagement to national policy advocacy."
         breadcrumbs={[{ name: "Programs", path: "/causes" }]}
       />
 

@@ -2,63 +2,63 @@ import { Cause } from "@/lib/types";
 
 export const causes: Cause[] = [
   {
-    title: "Patient Rights, Safety Awareness & Community Empowerment",
-    slug: "patient-rights-awareness",
-    category: "Strategic Pillar",
+    title: "National Patient Safety Campaign",
+    slug: "national-patient-safety-campaign",
+    category: "Program",
     description:
-      "Strengthening patient and community awareness of patient rights, responsibilities, and safety practices.",
+      "A nationwide public awareness campaign empowering patients and communities with simple, actionable patient-safety practices.",
     image: "",
     fullDescription:
-      "Many patients and caregivers cannot fully protect their rights or participate effectively in care if they do not understand what safe, respectful, and quality healthcare should look like. We translate technical health and rights information into simple, accessible messages through community dialogues, radio and social media campaigns, school and youth engagement, patient rights materials, and patient safety champions, so that patients become more informed, confident, and able to participate actively in decisions affecting their health.",
+      "The National Patient Safety Campaign works to raise public awareness about basic patient-safety practices across Tanzania — from hand hygiene and informed consent to safe referrals and speaking up when care feels unsafe. Through radio, community dialogues, social media, school outreach, and local champions, the campaign translates health-systems guidance into everyday actions people can use at home and in health facilities. By creating consistent public messaging and easy-to-use tools, the campaign helps patients, families, and community health workers recognize risks early and demand safer care.",
   },
   {
-    title: "Advocacy, Accountability & Policy Influence",
-    slug: "advocacy-policy-influence",
-    category: "Strategic Pillar",
+    title: "Patient Safety Learning Hub",
+    slug: "patient-safety-learning-hub",
+    category: "Program",
     description:
-      "Promoting accountability and policy reforms that protect patients from preventable harm and poor-quality care.",
+      "A digital and in-person knowledge hub offering training, toolkits, and bite-sized learning for providers, volunteers, and patients.",
     image: "",
     fullDescription:
-      "Community awareness alone is not enough; health institutions and policy actors also need systems that listen, respond, and protect patients from avoidable harm. We engage government institutions, health facilities, regulators, professional bodies, and civil society to promote stronger patient protection, better complaint and feedback mechanisms, respectful care standards, and the inclusion of patient voices in health-sector planning and review processes.",
+      "The Patient Safety Learning Hub provides practical learning resources that make safer care achievable at all levels. The Hub hosts modular training, downloadable toolkits, short guides, and case-based learning tailored for frontline health workers, community volunteers, and caregivers. Content emphasises respectful, low-cost practices, safeguarding, incident documentation, and patient engagement techniques. The Hub also curates learning forums and peer exchanges so teams can adapt proven approaches for local contexts and measure small, rapid improvements in safety and experience of care.",
   },
   {
-    title: "Research, Evidence Generation & Learning",
-    slug: "research-evidence-learning",
-    category: "Strategic Pillar",
+    title: "Healthcare Quality Improvement Collaborative",
+    slug: "quality-improvement-collaborative",
+    category: "Program",
     description:
-      "Generating and using evidence on patient experiences, patient safety gaps, and healthcare service delivery challenges.",
+      "A facility-led collaborative that pilots and scales pragmatic quality improvement projects across partner hospitals and clinics.",
     image: "",
     fullDescription:
-      "We should not only speak on behalf of patients; we should also produce credible evidence about what patients experience in healthcare settings. We conduct baseline assessments, patient experience surveys, case documentation, community scorecards, policy analysis, and research partnerships with academic institutions, all guided by consent, confidentiality, anonymization, safeguarding, and ethical data-use principles.",
+      "The Healthcare Quality Improvement Collaborative brings together multidisciplinary teams from health facilities to test, measure, and scale improvements that reduce preventable harm. Through short improvement cycles, coaching, shared measurement, and peer learning, participating facilities focus on priority safety challenges — for example, medication safety, infection prevention, maternal-newborn safety, and referral reliability. The Collaborative supports local data use, simple checklists and protocols, and leadership engagement so small changes translate into sustained, measurable gains for patients.",
   },
   {
-    title: "Capacity Building for Safer & Respectful Care",
-    slug: "capacity-building",
-    category: "Strategic Pillar",
+    title: "Youth for Patient Safety Network",
+    slug: "youth-for-patient-safety",
+    category: "Program",
     description:
-      "Building the capacity of patients, caregivers, community actors, and healthcare providers to promote safer, respectful, and patient-centred care.",
+      "A youth-led network training young advocates and student volunteers to champion patient rights and safety in communities and facilities.",
     image: "",
     fullDescription:
-      "Patient safety is a shared responsibility. Patients and caregivers need knowledge and confidence, while healthcare workers and facility teams need support to strengthen respectful communication, informed consent, confidentiality, complaint handling, and patient engagement. We develop training for community champions, volunteers, patient advocates, caregivers, and healthcare stakeholders on patient rights, safety practices, referral ethics, respectful care, safeguarding, and communication.",
+      "The Youth for Patient Safety Network trains and mobilises young leaders to promote patient-centred care and safety in their communities. Members run peer education, school programs, digital storytelling, and community dialogues to amplify patient voice and reduce stigma around speaking up. The Network builds skills in advocacy, community organising, basic safety literacy, and respectful communication — creating a sustained youth constituency that can hold local health services accountable and partner with facilities to co-design friendly, safe care.",
   },
   {
-    title: "Partnerships, Movement Building & Patient Voice",
-    slug: "partnerships-patient-voice",
-    category: "Strategic Pillar",
+    title: "Digital Health & Patient Safety Initiative",
+    slug: "digital-health-patient-safety",
+    category: "Program",
     description:
-      "Establishing PSA as a trusted national platform for patient voice, stakeholder dialogue, and collaboration.",
+      "Testing digital tools and data-driven approaches that make care safer — from referral tracking to patient feedback channels.",
     image: "",
     fullDescription:
-      "This pillar reflects the word Alliance in our name. We bring together patients, caregivers, patient groups, youth, civil society, healthcare providers, professional bodies, academic institutions, media, government, and development partners. Through patient voice forums, stakeholder dialogues, collaboration arrangements, and public campaigns, we are building a broader movement so that patient voices are organized, visible, and influential at every level of the health system.",
+      "The Digital Health & Patient Safety Initiative explores how low-cost digital tools can improve safety, continuity, and transparency of care. Pilot projects include simple referral-tracking apps, SMS-based patient feedback and complaint channels, digital checklists for facility teams, and dashboards that surface safety signals for managers. The Initiative focuses on pragmatic, privacy-respecting solutions that integrate into existing workflows and generate usable data for frontline teams and policymakers to act on quickly.",
   },
   {
-    title: "Institutional Strengthening & Sustainability",
-    slug: "institutional-strengthening",
-    category: "Strategic Pillar",
+    title: "Patient Safety Research Forums",
+    slug: "patient-safety-research-forums",
+    category: "Program",
     description:
-      "Strengthening PSA's governance, institutional systems, resource mobilization, and organizational sustainability.",
+      "A series of practitioner-focused forums and partnerships producing locally relevant evidence on patient experiences and safety gaps.",
     image: "",
     fullDescription:
-      "A strong mission can fail if the organization behind it lacks reliable governance, financial controls, safeguarding systems, and monitoring capacity. We prioritize sound governance, internal policies, annual planning, volunteer management, safeguarding, data protection, communications, fundraising, and monitoring, evaluation, accountability, and learning, so that PSA remains a credible, compliant, and sustainable organization capable of protecting community trust.",
+      "The Patient Safety Research Forums convene practitioners, academics, policymakers, and patient representatives to document patient experiences, test interventions, and translate findings into policy and practice. Forums support rapid assessments, case studies, pilot evaluations, and collaborative research projects that prioritise ethical data use and patient consent. Outputs are practical: short policy briefs, implementation guidance, and learning loops that help health systems adopt evidence-informed safety practices.",
   },
 ];
