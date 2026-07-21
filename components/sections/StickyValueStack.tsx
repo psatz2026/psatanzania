@@ -1,7 +1,7 @@
 import Link from "next/link";
 import CounterCard from "@/components/cards/CounterCard";
-import { motion, useReducedMotion } from "framer-motion";
 import React from "react";
+import { HealthcareIcon, CommunityIcon, PregnantIcon, ParentsIcon, ElderlyIcon, VulnerableIcon } from "@/components/ui/TargetIcons";
 
 const values = [
   {
@@ -158,46 +158,58 @@ export default function StickyValueStack() {
             ))}
           </div>
 
-          {/* Target population — minimal chips */}
+          {/* Target population — compact ordered list with numeric badges */}
           <div className="mt-10">
             <h3 className="font-heading text-[24px] leading-[1.1] text-carbon-black">Target Population</h3>
-            <ul className="mt-4 flex flex-wrap gap-3" aria-label="Target population">
-              <li>
-                <span className="inline-flex items-center px-3 py-1.5 rounded-full bg-ice-blue text-carbon-black border border-sky-blue/10 font-body text-[14px]">
-                  Healthcare workers
-                </span>
-              </li>
-              <li>
-                <span className="inline-flex items-center px-3 py-1.5 rounded-full bg-ice-blue text-carbon-black border border-sky-blue/10 font-body text-[14px]">
-                  Community healthcare workers
-                </span>
-              </li>
-              <li>
-                <span className="inline-flex items-center px-3 py-1.5 rounded-full bg-ice-blue text-carbon-black border border-sky-blue/10 font-body text-[14px]">
-                  Pregnant women
-                </span>
-              </li>
-              <li>
-                <span className="inline-flex items-center px-3 py-1.5 rounded-full bg-ice-blue text-carbon-black border border-sky-blue/10 font-body text-[14px]">
-                  Childrenâs parents and caregivers
-                </span>
-              </li>
-              <li>
-                <span className="inline-flex items-center px-3 py-1.5 rounded-full bg-ice-blue text-carbon-black border border-sky-blue/10 font-body text-[14px]">
-                  Elderly people
-                </span>
-              </li>
-              <li>
-                <span className="inline-flex items-center px-3 py-1.5 rounded-full bg-ice-blue text-carbon-black border border-sky-blue/10 font-body text-[14px]">
-                  Key vulnerable groups
-                </span>
-              </li>
-            </ul>
+            <ol className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-3 list-none" aria-label="Target population">
+              <li className="flex items-start gap-4">
+                <span className="flex items-center justify-center w-9 h-9 rounded-full bg-navy-blue text-white font-heading">1</span>
+                            <div className="flex items-center gap-3">
+                              <HealthcareIcon className="w-6 h-6 text-sky-blue flex-shrink-0" aria-hidden="true" />
+                              <span className="font-body text-[16px] leading-[1.4] text-carbon-black">Healthcare workers</span>
+                            </div>
+                          </li>
+                          <li className="flex items-start gap-4">
+                            <span className="flex items-center justify-center w-9 h-9 rounded-full bg-navy-blue text-white font-heading">2</span>
+                            <div className="flex items-center gap-3">
+                              <CommunityIcon className="w-6 h-6 text-sky-blue flex-shrink-0" aria-hidden="true" />
+                              <span className="font-body text-[16px] leading-[1.4] text-carbon-black">Community healthcare workers</span>
+                            </div>
+                          </li>
+                          <li className="flex items-start gap-4">
+                            <span className="flex items-center justify-center w-9 h-9 rounded-full bg-navy-blue text-white font-heading">3</span>
+                            <div className="flex items-center gap-3">
+                              <PregnantIcon className="w-6 h-6 text-sky-blue flex-shrink-0" aria-hidden="true" />
+                              <span className="font-body text-[16px] leading-[1.4] text-carbon-black">Pregnant women</span>
+                            </div>
+                          </li>
+                          <li className="flex items-start gap-4">
+                            <span className="flex items-center justify-center w-9 h-9 rounded-full bg-navy-blue text-white font-heading">4</span>
+                            <div className="flex items-center gap-3">
+                              <ParentsIcon className="w-6 h-6 text-sky-blue flex-shrink-0" aria-hidden="true" />
+                              <span className="font-body text-[16px] leading-[1.4] text-carbon-black">Children's parents and caregivers</span>
+                            </div>
+                          </li>
+                          <li className="flex items-start gap-4">
+                            <span className="flex items-center justify-center w-9 h-9 rounded-full bg-navy-blue text-white font-heading">5</span>
+                            <div className="flex items-center gap-3">
+                              <ElderlyIcon className="w-6 h-6 text-sky-blue flex-shrink-0" aria-hidden="true" />
+                              <span className="font-body text-[16px] leading-[1.4] text-carbon-black">Elderly people</span>
+                            </div>
+                          </li>
+                          <li className="flex items-start gap-4">
+                            <span className="flex items-center justify-center w-9 h-9 rounded-full bg-navy-blue text-white font-heading">6</span>
+                            <div className="flex items-center gap-3">
+                              <VulnerableIcon className="w-6 h-6 text-sky-blue flex-shrink-0" aria-hidden="true" />
+                              <span className="font-body text-[16px] leading-[1.4] text-carbon-black">Key vulnerable groups</span>
+                            </div>
+                          </li>
+                        </ol>
           </div>
         </div>
 
         {/* Mobile — stacked layout */}
-        <div className="lg:hidden flex flex-col gap-10 pt-[60px]">
+        <div className="lg:hidden flex flex-col gap-10">
           <div className="flex flex-col gap-6">
             <h2 className="font-heading text-[40px] leading-[1.1] text-carbon-black">Our vision</h2>
             <p className="font-body text-[18px] leading-[1.7] text-steel-gray">
@@ -223,6 +235,9 @@ export default function StickyValueStack() {
               <span className="ml-3 font-body text-[14px] font-medium text-steel-gray">Our team →</span>
             </Link>
           </div>
+          {/* Core values heading (mobile) */}
+          <h2 className="font-heading text-[28px] leading-[1.1] text-carbon-black px-5 sm:px-[30px]">Our core values</h2>
+
           {/* Horizontal snap carousel — swipe through the values */}
           <div className="-mx-5 sm:-mx-[30px]">
             <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory px-5 sm:px-[30px] pb-3 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
@@ -242,6 +257,55 @@ export default function StickyValueStack() {
             <p className="mt-3 px-5 sm:px-[30px] font-body text-[13px] text-steel-gray/60">
               Swipe to explore our {values.length} core values
             </p>
+          </div>
+
+          {/* Target population on mobile (single column) */}
+          <div className="mt-6 px-5 sm:px-[30px]">
+            <h3 className="font-heading text-[24px] leading-[1.1] text-carbon-black">Target Population</h3>
+            <ol className="mt-4 grid grid-cols-1 gap-3 list-none" aria-label="Target population">
+              <li className="flex items-start gap-3">
+                <span className="flex items-center justify-center w-8 h-8 rounded-full bg-navy-blue text-white font-heading">1</span>
+                <div className="flex items-center gap-3">
+                  <HealthcareIcon className="w-6 h-6 text-sky-blue flex-shrink-0" aria-hidden="true" />
+                  <span className="font-body text-[16px] leading-[1.4] text-carbon-black">Healthcare workers</span>
+                </div>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="flex items-center justify-center w-8 h-8 rounded-full bg-navy-blue text-white font-heading">2</span>
+                <div className="flex items-center gap-3">
+                  <CommunityIcon className="w-6 h-6 text-sky-blue flex-shrink-0" aria-hidden="true" />
+                  <span className="font-body text-[16px] leading-[1.4] text-carbon-black">Community healthcare workers</span>
+                </div>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="flex items-center justify-center w-8 h-8 rounded-full bg-navy-blue text-white font-heading">3</span>
+                <div className="flex items-center gap-3">
+                  <PregnantIcon className="w-6 h-6 text-sky-blue flex-shrink-0" aria-hidden="true" />
+                  <span className="font-body text-[16px] leading-[1.4] text-carbon-black">Pregnant women</span>
+                </div>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="flex items-center justify-center w-8 h-8 rounded-full bg-navy-blue text-white font-heading">4</span>
+                <div className="flex items-center gap-3">
+                  <ParentsIcon className="w-6 h-6 text-sky-blue flex-shrink-0" aria-hidden="true" />
+                  <span className="font-body text-[16px] leading-[1.4] text-carbon-black">Children's parents and caregivers</span>
+                </div>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="flex items-center justify-center w-8 h-8 rounded-full bg-navy-blue text-white font-heading">5</span>
+                <div className="flex items-center gap-3">
+                  <ElderlyIcon className="w-6 h-6 text-sky-blue flex-shrink-0" aria-hidden="true" />
+                  <span className="font-body text-[16px] leading-[1.4] text-carbon-black">Elderly people</span>
+                </div>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="flex items-center justify-center w-8 h-8 rounded-full bg-navy-blue text-white font-heading">6</span>
+                <div className="flex items-center gap-3">
+                  <VulnerableIcon className="w-6 h-6 text-sky-blue flex-shrink-0" aria-hidden="true" />
+                  <span className="font-body text-[16px] leading-[1.4] text-carbon-black">Key vulnerable groups</span>
+                </div>
+              </li>
+            </ol>
           </div>
         </div>
 
