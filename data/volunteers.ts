@@ -15,7 +15,7 @@ export const volunteers: Volunteer[] = [
   },
   {
     name: "Dr. Saul Shemdoe",
-    role: "Treasurer",
+    role: "Founding Member & Treasurer",
     image: "/team/DR.SAUL_SHEMDOE-foundingmemberandtreasurer.png",
     rank: "leadership",
   },
@@ -23,19 +23,19 @@ export const volunteers: Volunteer[] = [
     name: "Dr. Jacquiline Tungaraza",
     role: "Member",
     image: "/team/Dr.Jacquiline_tungaraza-member.png",
-    rank: "leadership",
+    rank: "member",
   },
   {
     name: "Jacob Kashililika",
     role: "Member",
     image: "/team/jacob_kashililika-Member.png",
-    rank: "leadership",
+    rank: "member",
   },
   {
     name: "Mwajabu Mshana",
     role: "Member",
     image: "/team/Mwajabu_Mshana-member.png",
-    rank: "leadership",
+    rank: "member",
   },
 ];
 

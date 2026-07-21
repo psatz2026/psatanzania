@@ -19,12 +19,8 @@ export default function PartnersQuoteSection() {
               <PartnersIllustration className="w-full h-full" />
             </div>
             <div className="lg:w-[55%] flex flex-col justify-between gap-16">
-              {/*
-                TODO: [NEEDS INPUT FROM PSA: full organization description] — one-line swap when copy arrives.
-                Draft start: "PSA is a youth-led non-profit organization for …"
-              */}
               <p className="font-body text-[18px] leading-[1.6] text-steel-gray">
-                PSA is a youth-led non-profit organization for {"{{ORG_DESCRIPTION}}"}
+                Patient Safety Alliance is a youth-led non-profit promoting patient safety, strengthening patient voices, and supporting a more responsive, inclusive, and accountable healthcare system in Tanzania.
               </p>
               <Button label="About Us" href="/about" variant="outlined" />
             </div>

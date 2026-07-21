@@ -11,37 +11,37 @@ const ease = [0.23, 1, 0.32, 1] as const;
 
 const pillars = [
   {
-    question: "Patient Rights, Provider Safety & Community Engagement",
+    question: "Patient Rights, Safety Awareness & Community Empowerment",
     answer:
       "We strengthen patient and community awareness of patient rights, responsibilities, and safety practices through community dialogues, campaigns, youth engagement, and patient safety champions.",
     icon: pillarIcons["patient-rights-awareness"],
   },
   {
-    question: "Capacity Building for Safer and Respectful Care",
-    answer:
-      "We build the capacity of patients, caregivers, community actors, and healthcare providers to promote safer, respectful, and patient-centred care.",
-    icon: pillarIcons["capacity-building"],
-  },
-  {
-    question: "Evidence Generation & Knowledge Translation",
-    answer:
-      "We generate and use evidence on patient experiences, safety gaps, and service delivery challenges so our advocacy is credible, ethical, and trusted by stakeholders.",
-    icon: pillarIcons["research-evidence-learning"],
-  },
-  {
-    question: "Advocacy & Policy Influence",
+    question: "Advocacy, Accountability & Policy Influence",
     answer:
       "We promote accountability and policy reforms that protect patients from preventable harm, engaging government, regulators, facilities, and civil society to strengthen patient protection.",
     icon: pillarIcons["advocacy-policy-influence"],
   },
   {
-    question: "Partnerships & Collaboration",
+    question: "Research, Evidence Generation & Learning",
+    answer:
+      "We generate and use evidence on patient experiences, safety gaps, and service delivery challenges so our advocacy is credible, ethical, and trusted by stakeholders.",
+    icon: pillarIcons["research-evidence-learning"],
+  },
+  {
+    question: "Capacity Building for Safer & Respectful Care",
+    answer:
+      "We build the capacity of patients, caregivers, community actors, and healthcare providers to promote safer, respectful, and patient-centred care.",
+    icon: pillarIcons["capacity-building"],
+  },
+  {
+    question: "Partnerships, Movement Building & Patient Voice",
     answer:
       "We are building a trusted national platform that brings patients, communities, providers, and partners together so patient voices are organized, visible, and influential.",
     icon: pillarIcons["partnerships-patient-voice"],
   },
   {
-    question: "Sustainable Leadership & Institutional Strengthening",
+    question: "Institutional Strengthening & Sustainability",
     answer:
       "We invest in strong governance, safeguarding, data protection, and sustainable systems so PSA can deliver its mission professionally and protect community trust.",
     icon: pillarIcons["institutional-strengthening"],

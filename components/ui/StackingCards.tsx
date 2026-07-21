@@ -1,7 +1,6 @@
 "use client";
 
 import { useRef } from "react";
-import Link from "next/link";
 import {
   motion,
   MotionValue,
@@ -14,7 +13,6 @@ export interface StackItem {
   icon: React.ReactNode;
   title: string;
   description: string;
-  href?: string;
 }
 
 /* Tiny alternating tilts — a real deck never stacks perfectly straight */
@@ -52,17 +50,8 @@ function StackedCard({
         rotate: reduce ? 0 : tilts[index % tilts.length],
         ...(animated ? { scale } : {}),
       }}
-      className={`sticky bg-white rounded-2xl shadow-[0_2px_16px_rgba(27,56,136,0.07)] border border-sky-blue/20 p-10 flex flex-col gap-6 overflow-hidden ${
-        item.href ? "transition-shadow duration-200 hover:shadow-[0_4px_24px_rgba(27,56,136,0.12)]" : ""
-      }`}
+      className="sticky bg-white rounded-2xl shadow-[0_2px_16px_rgba(27,56,136,0.07)] border border-sky-blue/20 p-10 flex flex-col gap-6 overflow-hidden"
     >
-      {item.href && (
-        <Link
-          href={item.href}
-          className="absolute inset-0 z-20"
-          aria-label={item.title}
-        />
-      )}
       {/* Corner brand motif — rings + medical plus, cropped by the card edge */}
       <svg
         aria-hidden
@@ -81,11 +70,6 @@ function StackedCard({
       </div>
       <h3 className="font-heading text-[28px] lg:text-[32px] leading-[1.2] text-carbon-black">
         {item.title}
-        {item.href && (
-          <span className="ml-2 text-sky-blue text-[22px] align-middle" aria-hidden>
-            →
-          </span>
-        )}
       </h3>
       <p className="font-body text-[16px] leading-[1.6] text-steel-gray">
         {item.description}
@@ -94,7 +78,7 @@ function StackedCard({
         <motion.div
           aria-hidden
           style={{ opacity: veil }}
-          className="absolute inset-0 bg-white rounded-2xl pointer-events-none z-10"
+          className="absolute inset-0 bg-white rounded-2xl pointer-events-none"
         />
       )}
     </motion.div>
