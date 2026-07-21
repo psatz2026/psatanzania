@@ -13,9 +13,9 @@ export const metadata: Metadata = pageMetadata({
 });
 import Button from "@/components/ui/Button";
 import AnimateIn from "@/components/ui/AnimateIn";
-import { leadership, members } from "@/data/volunteers";
+import { volunteers } from "@/data/volunteers";
 
-const teamJsonLd = [...leadership, ...members].map((v) => ({
+const teamJsonLd = volunteers.map((v) => ({
   "@context": "https://schema.org",
   "@type": "Person",
   name: v.name,
@@ -46,23 +46,7 @@ export default function TeamPage() {
               </h2>
             </AnimateIn>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-              {leadership.map((v, i) => (
-                <AnimateIn key={v.name} delay={i * 0.08}>
-                  <VolunteerCard volunteer={v} />
-                </AnimateIn>
-              ))}
-            </div>
-          </div>
-
-          {/* Members */}
-          <div className="flex flex-col gap-8">
-            <AnimateIn>
-              <h2 className="font-heading text-[28px] lg:text-[34px] leading-[1.3] text-carbon-black">
-                Members
-              </h2>
-            </AnimateIn>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-              {members.map((v, i) => (
+              {volunteers.map((v, i) => (
                 <AnimateIn key={v.name} delay={i * 0.08}>
                   <VolunteerCard volunteer={v} />
                 </AnimateIn>
