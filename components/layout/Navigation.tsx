@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
@@ -29,6 +29,7 @@ export default function Navigation() {
   const [scrolled, setScrolled] = useState(false);
   const [openGroup, setOpenGroup] = useState<string | null>(null);
   const pathname = usePathname();
+  const navigationRef = useRef<HTMLElement>(null);
 
   const hasDarkHero = darkHeroRoutes.includes(pathname);
   const showDark = scrolled || !hasDarkHero;
@@ -50,6 +51,14 @@ export default function Navigation() {
     document.addEventListener("keydown", onKey);
     return () => document.removeEventListener("keydown", onKey);
   }, [openGroup]);
+
+  useEffect(() => {
+    const onPointerDown = (event: PointerEvent) => {
+      if (!navigationRef.current?.contains(event.target as Node)) setOpenGroup(null);
+    };
+    document.addEventListener("pointerdown", onPointerDown);
+    return () => document.removeEventListener("pointerdown", onPointerDown);
+  }, []);
 
   useEffect(() => {
     document.body.style.overflow = mobileOpen ? "hidden" : "";
@@ -100,10 +109,13 @@ export default function Navigation() {
           </Link>
 
           {/* Desktop Nav Links */}
-          <nav className="hidden lg:flex items-center gap-8">
+          <nav ref={navigationRef} className="hidden lg:flex items-center gap-7">
             {navLinks.map((link) => {
-              if ((link as any).children) {
-                const group = link as any;
+              if ("children" in link) {
+                const group = link as {
+                  label: string;
+                  children: { label: string; href: string }[];
+                };
                 const isOpen = openGroup === group.label;
                 return (
                   <div
@@ -112,50 +124,51 @@ export default function Navigation() {
                     onMouseEnter={() => setOpenGroup(group.label)}
                     onMouseLeave={() => setOpenGroup(null)}
                   >
-                    {/* Button + connected panel container */}
-                    <div className="overflow-visible">
+                    <div className="relative">
                       <button
                         aria-haspopup="true"
                         aria-expanded={isOpen ? "true" : "false"}
                         onClick={() => setOpenGroup(isOpen ? null : group.label)}
                         onFocus={() => setOpenGroup(group.label)}
-                        className={`relative font-body text-[15px] font-medium transition-colors duration-200 flex items-center gap-2 px-3 py-2 ${
+                        className={`inline-flex items-center gap-2 rounded-full px-3 py-2 font-body text-[15px] font-medium transition-[color,background-color,transform] duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] active:scale-[0.97] ${
                           isOpen
-                            ? (showDark ? 'rounded-t-lg bg-white text-carbon-black' : 'rounded-t-lg bg-navy-blue text-white')
-                            : (showDark ? 'text-carbon-black hover:text-sky-blue' : 'text-white/90 hover:text-light-blue')
+                            ? (showDark ? "bg-ice-blue text-navy-blue" : "bg-white/10 text-white")
+                            : (showDark ? "text-carbon-black hover:text-sky-blue" : "text-white/90 hover:text-light-blue")
                         }`}
-                        style={{ WebkitTapHighlightColor: 'transparent' }}
                       >
                         <span>{group.label}</span>
                         <svg
-                          className={`w-3 h-3 transition-transform duration-200 ${isOpen ? "rotate-180" : "rotate-0"}`}
+                          className={`h-3 w-3 transition-transform duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] ${isOpen ? "rotate-180" : "rotate-0"}`}
                           viewBox="0 0 24 24"
                           fill="none"
                           xmlns="http://www.w3.org/2000/svg"
                           aria-hidden
                         >
-                        <path d="M6 9l6 6 6-6" stroke={showDark ? "#1B3888" : "#FFFFFF"} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                        <path d="M6 9l6 6 6-6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
                         </svg>
                       </button>
 
                       {/* Links panel — connected to the button */}
-                      <div className={`${isOpen ? 'block' : 'hidden'} absolute left-0 top-full w-56 z-50`}>
-                        <div className={`${showDark ? 'bg-white text-carbon-black rounded-b-lg border-t border-carbon-black-5' : 'bg-navy-blue text-white rounded-b-lg border-t border-white/10'}`}>
-                          {group.children.map((child: any) => (
+                      <div
+                        aria-hidden={!isOpen}
+                        className={`absolute left-0 top-full z-50 w-[220px] origin-top-left rounded-xl border border-navy-blue/10 bg-white p-1.5 shadow-[0_18px_45px_rgba(27,56,136,0.16),0_2px_8px_rgba(24,22,24,0.04)] transition-[opacity,transform,visibility] duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] ${isOpen ? "visible translate-y-0 scale-100 opacity-100" : "invisible -translate-y-1 scale-[0.97] opacity-0 pointer-events-none"}`}
+                      >
+                        <span
+                          aria-hidden
+                          className="absolute -top-1 left-5 h-2 w-2 rotate-45 border-l border-t border-navy-blue/10 bg-white"
+                        />
+                        <div className="flex flex-col gap-1">
+                          {group.children.map((child) => (
                             <Link
                               key={child.href}
                               href={child.href}
-                              className={`block px-4 py-2 text-sm font-body transition-colors ${
-                                showDark
-                                  ? pathname === child.href
-                                    ? 'text-sky-blue bg-ice-blue/10'
-                                    : 'text-carbon-black hover:text-sky-blue hover:bg-ice-blue/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-blue/20'
-                                  : pathname === child.href
-                                  ? 'text-yellow bg-white/10'
-                                  : 'text-white hover:text-ice-blue hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-yellow/20'
-                              }`}
+                              onClick={() => setOpenGroup(null)}
+                              className="group/item flex items-center justify-between gap-4 rounded-lg px-3 py-2.5 font-body transition-[background-color,color] duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] text-carbon-black hover:bg-ice-blue hover:text-navy-blue focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-blue/50"
                             >
-                              {child.label}
+                              <span className="font-body text-[15px] font-medium">{child.label}</span>
+                              <svg aria-hidden viewBox="0 0 20 20" fill="none" className="h-4 w-4 shrink-0 text-sky-blue transition-transform duration-150 group-hover/item:translate-x-0.5">
+                                <path d="M4 10h11M11 5l5 5-5 5" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" />
+                              </svg>
                             </Link>
                           ))}
                         </div>
