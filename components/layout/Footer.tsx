@@ -36,7 +36,7 @@ export default function Footer() {
                 />
               </span>
               <span className="font-heading text-[15px] leading-[1.3] text-white max-w-[160px]">
-                Patient Safety Alliance Tanzania
+                Patient Safety Alliance 
               </span>
             </Link>
             <p className="font-body text-[15px] leading-[1.6] text-white/70 max-w-[320px]">
