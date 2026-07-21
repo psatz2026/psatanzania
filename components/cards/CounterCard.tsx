@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { useInView } from "framer-motion";
+import { useInView, useReducedMotion } from "framer-motion";
 
 interface CounterCardProps {
   value: number;
@@ -13,11 +13,17 @@ interface CounterCardProps {
 export default function CounterCard({ value, suffix = "", label, light = false }: CounterCardProps) {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true });
-  const [count, setCount] = useState(0);
+  const prefersReduced = useReducedMotion();
+  const [count, setCount] = useState(prefersReduced ? value : 0);
 
   useEffect(() => {
+    if (prefersReduced) {
+      setCount(value);
+      return;
+    }
+
     if (!isInView) return;
-    const duration = 1500;
+    const duration = 500; // shortened per request (400-600ms)
     const start = performance.now();
     const tick = (now: number) => {
       const elapsed = now - start;
@@ -27,7 +33,7 @@ export default function CounterCard({ value, suffix = "", label, light = false }
       if (progress < 1) requestAnimationFrame(tick);
     };
     requestAnimationFrame(tick);
-  }, [isInView, value]);
+  }, [isInView, value, prefersReduced]);
 
   return (
     <div ref={ref} className="flex flex-col gap-2">

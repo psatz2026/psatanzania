@@ -1,5 +1,7 @@
 import Link from "next/link";
-import StackingCards from "@/components/ui/StackingCards";
+import CounterCard from "@/components/cards/CounterCard";
+import { motion, useReducedMotion } from "framer-motion";
+import React from "react";
 
 const values = [
   {
@@ -86,52 +88,112 @@ const avatars = [
   "/team/Dr.Jacquiline_tungaraza-member.png",
 ];
 
+import IllustrationWithEntrance from "@/components/ui/IllustrationWithEntrance";
+
 export default function StickyValueStack() {
   return (
     <section className="overflow-x-clip pt-[80px] lg:pt-[140px]">
       <div className="max-w-[1460px] mx-auto px-5 sm:px-[30px] pb-[80px] lg:pb-[140px]">
 
-        {/* Desktop — sticky left + stacking value cards */}
-        <div className="hidden lg:flex gap-[80px]">
-
-          {/* Left: sticky below nav (nav=80px) */}
-          <div className="w-[400px] flex-shrink-0 sticky top-[80px] pt-[60px] self-start flex flex-col gap-8">
-            <h2 className="font-heading text-[56px] leading-[1.1] text-carbon-black">
-              Our vision
-            </h2>
-            <p className="font-body text-[18px] leading-[1.7] text-steel-gray">
-              "A people-centered healthcare system where every patient, regardless of who they are, receives safe, respectful, equitable healthcare free from preventable harm."
-            </p>
-            <div className="border-t border-carbon-black-5 pt-6 flex flex-col gap-3">
-              <h3 className="font-heading text-[20px] text-carbon-black">Our mission</h3>
-              <p className="font-body text-[16px] leading-[1.7] text-steel-gray">
-                To promote patient safety and patient-centered quality healthcare in Tanzania by empowering healthcare providers, patients, and communities, generating evidence, advocating for accountability, and collaborating with healthcare stakeholders to reduce preventable harm and strengthen trust in the health system.
+        {/* Desktop — two-column layout: sticky mission left + illustration/avatar right */}
+        <div className="hidden lg:grid lg:grid-cols-[1fr_420px] gap-[80px]">
+          {/* Left column: mission/vision (sticky) */}
+          <div className="pt-[60px] self-start">
+            <div className="w-full sticky top-[80px] flex flex-col gap-8">
+              <h2 className="font-heading text-[56px] leading-[1.1] text-carbon-black">
+                Our vision
+              </h2>
+              <p className="font-body text-[18px] leading-[1.7] text-steel-gray">
+                "A people-centered healthcare system where every patient, regardless of who they are, receives safe, respectful, equitable healthcare free from preventable harm."
               </p>
+              <div className="border-t border-carbon-black-5 pt-6 flex flex-col gap-3">
+                <h3 className="font-heading text-[20px] text-carbon-black">Our mission</h3>
+                <p className="font-body text-[16px] leading-[1.7] text-steel-gray">
+                  To promote patient safety and patient-centered quality healthcare in Tanzania by empowering healthcare providers, patients, and communities, generating evidence, advocating for accountability, and collaborating with healthcare stakeholders to reduce preventable harm and strengthen trust in the health system.
+                </p>
+              </div>
             </div>
-            {/* Overlapping avatar circles — links to team page */}
-            <Link
-              href="/team"
-              className="group flex items-center"
-              style={{ marginLeft: "-4px" }}
-            >
-              {avatars.map((src, i) => (
-                <div
-                  key={i}
-                  className="w-12 h-12 rounded-full border-2 border-white overflow-hidden flex-shrink-0 bg-ice-blue transition-transform duration-200 ease-out group-hover:translate-x-[2px]"
-                  style={{ marginLeft: i === 0 ? 0 : "-12px", zIndex: i }}
-                >
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={src} alt="PSA Tanzania team member" className="w-full h-full object-cover" />
-                </div>
-              ))}
-              <span className="ml-4 font-body text-[14px] font-medium text-steel-gray transition-colors duration-200 group-hover:text-sky-blue">
-                Our team →
-              </span>
-            </Link>
           </div>
 
-          {/* Right: stacking value card deck */}
-          <StackingCards items={values} />
+          {/* Right column: illustration + avatars */}
+          <div className="pt-[60px] self-start">
+            <div className="sticky top-[80px] flex flex-col gap-6">
+              {/* Decorative SVG illustration with a subtle entrance animation */}
+              {/* Will animate scale + opacity on first entrance, respects prefers-reduced-motion */}
+              <IllustrationWithEntrance />
+
+              <Link href="/team" className="group flex items-center mt-4" style={{ marginLeft: "-4px" }}>                {avatars.map((src, i) => (
+                  <div
+                    key={i}
+                    className="w-12 h-12 rounded-full border-2 border-white overflow-hidden flex-shrink-0 bg-ice-blue transition-transform duration-200 ease-out group-hover:translate-x-[2px]"
+                    style={{ marginLeft: i === 0 ? 0 : "-12px", zIndex: i }}
+                  >
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={src} alt="PSA Tanzania team member" className="w-full h-full object-cover" />
+                  </div>
+                ))}
+                <span className="ml-4 font-body text-[14px] font-medium text-steel-gray transition-colors duration-200 group-hover:text-sky-blue">
+                  Our team →
+                </span>
+              </Link>
+            </div>
+          </div>
+        </div>
+
+        {/* Core values — moved below the mission with a clear heading (desktop) */}
+        <div className="hidden lg:block mt-12">
+          <h2 className="font-heading text-[34px] leading-[1.1] text-carbon-black">Our core values</h2>
+          <div className="mt-6 grid grid-cols-2 lg:grid-cols-4 gap-6">
+            {values.map((v, i) => (
+              <div
+                key={i}
+                className="bg-white rounded-2xl border border-sky-blue/20 shadow-[0_2px_16px_rgba(27,56,136,0.07)] p-6 flex flex-col gap-4"
+              >
+                <div className="w-12 h-12 rounded-full bg-ice-blue flex items-center justify-center text-sky-blue flex-shrink-0">
+                  {v.icon}
+                </div>
+                <h3 className="font-heading text-[18px] leading-[1.2] text-carbon-black">{v.title}</h3>
+                <p className="font-body text-[14px] leading-[1.6] text-steel-gray">{v.description}</p>
+              </div>
+            ))}
+          </div>
+
+          {/* Target population — minimal chips */}
+          <div className="mt-10">
+            <h3 className="font-heading text-[24px] leading-[1.1] text-carbon-black">Target Population</h3>
+            <ul className="mt-4 flex flex-wrap gap-3" aria-label="Target population">
+              <li>
+                <span className="inline-flex items-center px-3 py-1.5 rounded-full bg-ice-blue text-carbon-black border border-sky-blue/10 font-body text-[14px]">
+                  Healthcare workers
+                </span>
+              </li>
+              <li>
+                <span className="inline-flex items-center px-3 py-1.5 rounded-full bg-ice-blue text-carbon-black border border-sky-blue/10 font-body text-[14px]">
+                  Community healthcare workers
+                </span>
+              </li>
+              <li>
+                <span className="inline-flex items-center px-3 py-1.5 rounded-full bg-ice-blue text-carbon-black border border-sky-blue/10 font-body text-[14px]">
+                  Pregnant women
+                </span>
+              </li>
+              <li>
+                <span className="inline-flex items-center px-3 py-1.5 rounded-full bg-ice-blue text-carbon-black border border-sky-blue/10 font-body text-[14px]">
+                  Childrenâs parents and caregivers
+                </span>
+              </li>
+              <li>
+                <span className="inline-flex items-center px-3 py-1.5 rounded-full bg-ice-blue text-carbon-black border border-sky-blue/10 font-body text-[14px]">
+                  Elderly people
+                </span>
+              </li>
+              <li>
+                <span className="inline-flex items-center px-3 py-1.5 rounded-full bg-ice-blue text-carbon-black border border-sky-blue/10 font-body text-[14px]">
+                  Key vulnerable groups
+                </span>
+              </li>
+            </ul>
+          </div>
         </div>
 
         {/* Mobile — stacked layout */}
