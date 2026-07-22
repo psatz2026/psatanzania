@@ -55,7 +55,7 @@ export default function UrgencySection() {
                 variant="white"
                 className="hover:!bg-sky-blue hover:!text-white"
               />
-              <Button label="Get Involved" href="/become-a-volunteer" variant="outlined" />
+              <Button label="Get Involved" href="/contact" variant="outlined" />
             </div>
           </aside>
 

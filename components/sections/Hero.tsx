@@ -99,7 +99,7 @@ export default function Hero() {
               A youth-led alliance reducing preventable harm and putting
               patients at the centre of care.
             </p>
-            <Button label="Get Involved" href="/become-a-volunteer" variant="white" />
+            <Button label="Get Involved" href="/contact" variant="white" />
           </motion.div>
         </div>
 
