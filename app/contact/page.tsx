@@ -58,7 +58,7 @@ export default function ContactPage() {
               Ways to work with us
             </h2>
             <p className="mt-4 font-body text-[16px] lg:text-[18px] leading-[1.6] text-steel-gray">
-              Tell us how you would like to support patient safety in Tanzania — we will respond within 2 business days.
+              Tell us how you would like to support patient safety in Tanzania.
             </p>
           </div>
 
