@@ -23,11 +23,11 @@ export default function UrgencySection() {
             <p className="mt-4 font-body text-[18px] leading-[1.6] text-steel-gray max-w-[760px]">
               Most of these harms, including medication errors, healthcare-associated
               infections, diagnostic errors, unsafe surgery, patient misidentification, falls,
-              and unsafe blood transfusions, are preventable.
+              and unsafe blood transfusions, are preventable.(WHO.,2023).
             </p>
 
             <p className="mt-6 font-heading text-[18px] leading-[1.4] text-carbon-black">
-              <strong>Safe care is not optional — it is a fundamental right.</strong>
+              <strong>Safe care is not optional, it is a fundamental right.</strong>
             </p>
 
             {/* Counters row — accessible, reduced-motion aware */}
