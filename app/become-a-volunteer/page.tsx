@@ -100,18 +100,7 @@ export default function BecomeAVolunteerPage() {
                   skills, and join a passionate community of advocates.
                 </p>
               </div>
-              <div
-                id="membership"
-                className="scroll-mt-[100px] rounded-2xl border border-sky-blue/20 bg-white p-6 shadow-sm flex flex-col gap-3"
-              >
-                <h3 className="font-heading text-[20px] leading-[1.3] text-carbon-black">
-                  Become a member
-                </h3>
-                <p className="font-body text-[15px] leading-[1.6] text-steel-gray">
-                  Membership connects you to our network of patient safety champions. Apply below
-                  and note your interest in membership in your motivation.
-                </p>
-              </div>
+             
               <CheckList
                 items={[
                   "Meaningful, flexible roles",
