@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef } from "react";
+import Link from "next/link";
 import {
   motion,
   MotionValue,
@@ -13,10 +14,14 @@ export interface StackItem {
   icon: React.ReactNode;
   title: string;
   description: string;
+  href?: string;
 }
 
 /* Tiny alternating tilts — a real deck never stacks perfectly straight */
 const tilts = [-0.7, 0.5, -0.4, 0.8, -0.5, 0.6];
+
+const cardSurface =
+  "bg-white rounded-2xl shadow-[0_2px_16px_rgba(27,56,136,0.07)] border border-sky-blue/20 p-10 flex flex-col gap-6 overflow-hidden relative";
 
 function StackedCard({
   item,
@@ -41,17 +46,8 @@ function StackedCard({
   const isLast = index === count - 1;
   const animated = !isLast && !reduce;
 
-  return (
-    <motion.div
-      style={{
-        top: 140 + index * 12,
-        zIndex: index + 1,
-        transformOrigin: "top center",
-        rotate: reduce ? 0 : tilts[index % tilts.length],
-        ...(animated ? { scale } : {}),
-      }}
-      className="sticky bg-white rounded-2xl shadow-[0_2px_16px_rgba(27,56,136,0.07)] border border-sky-blue/20 p-10 flex flex-col gap-6 overflow-hidden"
-    >
+  const content = (
+    <>
       {/* Corner brand motif — rings + medical plus, cropped by the card edge */}
       <svg
         aria-hidden
@@ -74,12 +70,50 @@ function StackedCard({
       <p className="font-body text-[16px] leading-[1.6] text-steel-gray">
         {item.description}
       </p>
+      {item.href && (
+        <span className="font-body text-[15px] font-medium text-sky-blue inline-flex items-center gap-1.5 mt-auto">
+          Learn more
+          <svg aria-hidden viewBox="0 0 20 20" fill="none" className="h-4 w-4">
+            <path
+              d="M4 10h11M11 5l5 5-5 5"
+              stroke="currentColor"
+              strokeWidth="1.75"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        </span>
+      )}
       {animated && (
         <motion.div
           aria-hidden
           style={{ opacity: veil }}
           className="absolute inset-0 bg-white rounded-2xl pointer-events-none"
         />
+      )}
+    </>
+  );
+
+  return (
+    <motion.div
+      style={{
+        top: 140 + index * 12,
+        zIndex: index + 1,
+        transformOrigin: "top center",
+        rotate: reduce ? 0 : tilts[index % tilts.length],
+        ...(animated ? { scale } : {}),
+      }}
+      className="sticky"
+    >
+      {item.href ? (
+        <Link
+          href={item.href}
+          className={`${cardSurface} transition-[border-color,box-shadow,transform] duration-200 ease-out hover:border-sky-blue/40 hover:shadow-[0_4px_20px_rgba(27,56,136,0.1)] focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-blue/50 focus-visible:ring-offset-2 active:scale-[0.99]`}
+        >
+          {content}
+        </Link>
+      ) : (
+        <div className={cardSurface}>{content}</div>
       )}
     </motion.div>
   );

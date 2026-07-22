@@ -84,7 +84,10 @@ export default function BecomeAVolunteerPage() {
         breadcrumbs={[{ name: "Become a Volunteer", path: "/become-a-volunteer" }]}
       />
 
-      <section className="py-[60px] lg:py-[100px] bg-ice-blue">
+      <section
+        id="volunteer"
+        className="py-[60px] lg:py-[100px] bg-ice-blue scroll-mt-[100px]"
+      >
         <div className="max-w-[1460px] mx-auto px-5 sm:px-[30px]">
           <div className="flex flex-col lg:flex-row gap-16">
             <div className="lg:w-[35%] flex flex-col gap-8">
@@ -95,6 +98,18 @@ export default function BecomeAVolunteerPage() {
                 <p className="font-body text-[16px] leading-[1.6] text-steel-gray">
                   As a PSA Tanzania volunteer you will contribute to real change, develop new
                   skills, and join a passionate community of advocates.
+                </p>
+              </div>
+              <div
+                id="membership"
+                className="scroll-mt-[100px] rounded-2xl border border-sky-blue/20 bg-white p-6 shadow-sm flex flex-col gap-3"
+              >
+                <h3 className="font-heading text-[20px] leading-[1.3] text-carbon-black">
+                  Become a member
+                </h3>
+                <p className="font-body text-[15px] leading-[1.6] text-steel-gray">
+                  Membership connects you to our network of patient safety champions. Apply below
+                  and note your interest in membership in your motivation.
                 </p>
               </div>
               <CheckList

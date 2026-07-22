@@ -17,7 +17,7 @@ export async function generateMetadata({
   if (!page) return {};
   return pageMetadata({
     title: page.title,
-    description: `${page.title} for Patient Safety Alliance Tanzania — how we handle your data and the terms that govern use of our website.`,
+    description: `${page.title} for Patient Safety Alliance — how we handle your data and the terms that govern use of our website.`,
     path: `/legal-pages/${page.slug}`,
   });
 }

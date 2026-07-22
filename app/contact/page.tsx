@@ -32,6 +32,15 @@ export default function ContactPage() {
     }
   };
 
+  const focusContactSubject = (value: string) => {
+    const subject = document.getElementById("subject") as HTMLInputElement | null;
+    if (!subject) return;
+    subject.value = value;
+    clearFieldError("subject");
+    subject.focus();
+    subject.scrollIntoView({ behavior: "smooth", block: "center" });
+  };
+
   return (
     <>
       <PageHero
@@ -40,6 +49,79 @@ export default function ContactPage() {
         lead="Whether you are a patient, health worker, researcher, or organization, we want to hear from you."
         breadcrumbs={[{ name: "Contact", path: "/contact" }]}
       />
+
+      {/* Involvement pathways — scroll targets from Ways to Get Involved / Donate */}
+      <section className="py-[60px] lg:py-[80px]">
+        <div className="max-w-[1460px] mx-auto px-5 sm:px-[30px] flex flex-col gap-10 lg:gap-12">
+          <div className="max-w-[720px]">
+            <h2 className="font-heading text-[28px] lg:text-[34px] leading-[1.3] text-carbon-black">
+              Ways to work with us
+            </h2>
+            <p className="mt-4 font-body text-[16px] lg:text-[18px] leading-[1.6] text-steel-gray">
+              Tell us how you would like to support patient safety in Tanzania — we will respond within 2 business days.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+            <div
+              id="partnership"
+              className="scroll-mt-[100px] rounded-2xl border border-sky-blue/20 bg-white p-6 sm:p-8 shadow-[0_2px_16px_rgba(27,56,136,0.07)] flex flex-col gap-4"
+            >
+              <h3 className="font-heading text-[22px] leading-[1.3] text-carbon-black">
+                Partnership
+              </h3>
+              <p className="font-body text-[16px] leading-[1.6] text-steel-gray flex-1">
+                Civil society, academic, and health-sector organizations can collaborate with us on programs, research, and advocacy.
+              </p>
+              <button
+                type="button"
+                className="self-start font-body text-[15px] font-medium text-sky-blue hover:text-light-blue transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-blue/50 rounded"
+                onClick={() => focusContactSubject("Partnership inquiry")}
+              >
+                Start a partnership conversation
+              </button>
+            </div>
+
+            <div
+              id="sponsorship"
+              className="scroll-mt-[100px] rounded-2xl border border-sky-blue/20 bg-white p-6 sm:p-8 shadow-[0_2px_16px_rgba(27,56,136,0.07)] flex flex-col gap-4"
+            >
+              <h3 className="font-heading text-[22px] leading-[1.3] text-carbon-black">
+                Sponsorship
+              </h3>
+              <p className="font-body text-[16px] leading-[1.6] text-steel-gray flex-1">
+                Foundations, embassies, and development partners can sponsor programs that expand patient safety education and advocacy.
+              </p>
+              <button
+                type="button"
+                className="self-start font-body text-[15px] font-medium text-sky-blue hover:text-light-blue transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-blue/50 rounded"
+                onClick={() => focusContactSubject("Sponsorship inquiry")}
+              >
+                Discuss sponsorship
+              </button>
+            </div>
+
+            <div
+              id="donate"
+              className="scroll-mt-[100px] rounded-2xl border border-[#E23D3D]/25 bg-white p-6 sm:p-8 shadow-[0_2px_16px_rgba(27,56,136,0.07)] flex flex-col gap-4"
+            >
+              <h3 className="font-heading text-[22px] leading-[1.3] text-carbon-black">
+                Donate
+              </h3>
+              <p className="font-body text-[16px] leading-[1.6] text-steel-gray flex-1">
+                Every contribution helps us reach more patients, train more champions, and strengthen safer care across Tanzania.
+              </p>
+              <button
+                type="button"
+                className="self-start font-body text-[15px] font-medium text-[#E23D3D] hover:text-[#C93434] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E23D3D]/40 rounded"
+                onClick={() => focusContactSubject("Donation inquiry")}
+              >
+                Get in touch to donate
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <section className="py-[60px] lg:py-[100px] bg-ice-blue">
         <div className="max-w-[1460px] mx-auto px-5 sm:px-[30px]">

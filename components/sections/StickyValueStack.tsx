@@ -129,7 +129,7 @@ export default function StickyValueStack() {
                     style={{ marginLeft: i === 0 ? 0 : "-12px", zIndex: i }}
                   >
                     {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={src} alt="PSA Tanzania team member" className="w-full h-full object-cover" />
+                    <img src={src} alt="PSA team member" className="w-full h-full object-cover" />
                   </div>
                 ))}
                 <span className="ml-4 font-body text-[14px] font-medium text-steel-gray transition-colors duration-200 group-hover:text-sky-blue">
@@ -229,7 +229,7 @@ export default function StickyValueStack() {
                   style={{ marginLeft: i === 0 ? 0 : "-10px", zIndex: i }}
                 >
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={src} alt="PSA Tanzania team member" className="w-full h-full object-cover" />
+                  <img src={src} alt="PSA team member" className="w-full h-full object-cover" />
                 </div>
               ))}
               <span className="ml-3 font-body text-[14px] font-medium text-steel-gray">Our team →</span>

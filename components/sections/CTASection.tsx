@@ -12,7 +12,7 @@ interface CTASectionProps {
 
 export default function CTASection({
   title = "Ready to make a difference?",
-  description = "Join PSA Tanzania and help us build a safer, more accountable healthcare system for every patient.",
+  description = "Join PSA and help us build a safer, more accountable healthcare system for every patient.",
   primaryLabel = "Get Involved",
   primaryHref = "/become-a-volunteer",
   secondaryLabel = "",

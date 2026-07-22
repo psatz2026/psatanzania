@@ -29,7 +29,7 @@ export default function Footer() {
               <span className="flex items-center justify-center w-[52px] h-[52px] rounded-full bg-white shadow-sm flex-shrink-0">
                 <Image
                   src="/psa-tanzania-logo-icon.png"
-                  alt="Patient Safety Alliance Tanzania"
+                  alt="Patient Safety Alliance"
                   width={34}
                   height={34}
                   className="w-[34px] h-[34px] object-contain"
@@ -70,7 +70,7 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="mt-16 pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="font-body text-[13px] text-white/40">
-            © {new Date().getFullYear()} Patient Safety Alliance Tanzania. All rights reserved.
+            © {new Date().getFullYear()} Patient Safety Alliance. All rights reserved.
           </p>
           <p className="font-body text-[13px] text-white/40">
             Collaborating for Better Care.

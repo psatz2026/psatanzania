@@ -4,9 +4,9 @@ import PageHero from "@/components/sections/PageHero";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
-  title: "About Us — Our Mission for Patient Safety in Tanzania",
+  title: "About Us — Our Mission for Patient Safety",
   description:
-    "Patient Safety Alliance Tanzania is a youth-led movement reducing preventable harm and building a health system where every patient is treated with safety, dignity, and respect.",
+    "Patient Safety Alliance is a youth-led movement reducing preventable harm and building a health system where every patient is treated with safety, dignity, and respect.",
   path: "/about",
 });
 import CounterCard from "@/components/cards/CounterCard";
@@ -24,9 +24,9 @@ export default function AboutPage() {
   return (
     <>
       <PageHero
-        eyebrow="About PSA Tanzania"
+        eyebrow="About PSA"
         title="A youth-led movement for safer care"
-        lead="Patient Safety Alliance Tanzania is dedicated to reducing preventable harm and building a health system where every patient is treated with safety, dignity, and respect."
+        lead="Patient Safety Alliance is dedicated to reducing preventable harm and building a health system where every patient is treated with safety, dignity, and respect."
         breadcrumbs={[{ name: "About", path: "/about" }]}
       />
 
@@ -48,7 +48,7 @@ export default function AboutPage() {
 
       <CTASection
         title="Be part of the change."
-        description="Whether you are a patient, health worker, researcher, or concerned citizen, there is a place for you in PSA Tanzania."
+        description="Whether you are a patient, health worker, researcher, or concerned citizen, there is a place for you in PSA."
       />
     </>
   );

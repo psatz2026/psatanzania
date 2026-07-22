@@ -1,11 +1,11 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, type MouseEvent } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
-import { lenisStore } from "@/components/layout/SmoothScroll";
+import { lenisStore, scrollToHash } from "@/components/layout/SmoothScroll";
 
 const navLinks = [
   { label: "Home", href: "/" },
@@ -15,7 +15,7 @@ const navLinks = [
       { label: "About Us", href: "/about" },
       { label: "Vision", href: "/about#vision" },
       { label: "Mission", href: "/about#mission" },
-      { label: "Leadership", href: "/team" },
+      { label: "Leadership", href: "/team#leadership" },
     ],
   },
   { label: "Programs", href: "/causes" },
@@ -24,6 +24,8 @@ const navLinks = [
 ];
 
 const darkHeroRoutes = ["/", "/about", "/causes", "/team", "/faqs", "/become-a-volunteer", "/contact"];
+
+const donateHref = "/contact#donate";
 
 export default function Navigation() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -48,6 +50,18 @@ export default function Navigation() {
     }
   };
 
+  const handleHashNav = (event: MouseEvent<HTMLAnchorElement>, href: string) => {
+    const [path, section] = href.split("#");
+    if (!section || pathname !== path) return;
+    event.preventDefault();
+    window.history.replaceState(null, "", href);
+    if (path === "/about") {
+      scrollToAboutSection(section);
+    } else {
+      scrollToHash(`#${section}`);
+    }
+  };
+
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -57,11 +71,22 @@ export default function Navigation() {
   useEffect(() => { setMobileOpen(false); setMobileGroup(null); setOpenGroup(null); }, [pathname]);
 
   useEffect(() => {
-    if (pathname !== "/about") return;
     const section = window.location.hash.slice(1);
-    if (section !== "vision" && section !== "mission") return;
-    const timer = window.setTimeout(() => scrollToAboutSection(section), 0);
-    return () => window.clearTimeout(timer);
+    if (!section) return;
+
+    if (pathname === "/about" && (section === "vision" || section === "mission")) {
+      const timer = window.setTimeout(() => scrollToAboutSection(section), 0);
+      return () => window.clearTimeout(timer);
+    }
+
+    if (
+      (pathname === "/contact" && ["donate", "partnership", "sponsorship"].includes(section)) ||
+      (pathname === "/team" && section === "leadership") ||
+      (pathname === "/become-a-volunteer" && ["volunteer", "membership"].includes(section))
+    ) {
+      const timer = window.setTimeout(() => scrollToHash(`#${section}`), 50);
+      return () => window.clearTimeout(timer);
+    }
   }, [pathname]);
 
   // Close dropdown on Escape
@@ -186,12 +211,7 @@ export default function Navigation() {
                               href={child.href}
                               onClick={(event) => {
                                 setOpenGroup(null);
-                                const section = child.href.split("#")[1];
-                                if (pathname === "/about" && section) {
-                                  event.preventDefault();
-                                  window.history.replaceState(null, "", child.href);
-                                  scrollToAboutSection(section);
-                                }
+                                handleHashNav(event, child.href);
                               }}
                               className="group/item flex items-center justify-between gap-4 rounded-lg px-3 py-2.5 font-body transition-[background-color,color] duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] text-carbon-black hover:bg-ice-blue hover:text-navy-blue focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-blue/50"
                             >
@@ -231,18 +251,14 @@ export default function Navigation() {
             })}
           </nav>
 
-          {/* Desktop CTA */}
+          {/* Desktop CTA — Donate */}
            <div className="hidden lg:flex items-center">
             <Link
-              href="/become-a-volunteer"
-              className="group relative inline-flex items-center justify-center bg-sky-blue text-white font-body font-medium text-[15px] px-6 h-[46px] rounded-full overflow-hidden active:scale-95"
+              href={donateHref}
+              onClick={(event) => handleHashNav(event, donateHref)}
+              className="group relative inline-flex items-center justify-center bg-[#E23D3D] text-white font-body font-medium text-[15px] px-6 h-[46px] rounded-full overflow-hidden shadow-sm transition-[background-color,transform,box-shadow] duration-200 ease-out hover:bg-[#C93434] hover:-translate-y-0.5 hover:shadow-md active:scale-95 active:translate-y-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E23D3D]/50 focus-visible:ring-offset-2"
             >
-              <span className="transition-transform duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] group-hover:-translate-y-[46px] whitespace-nowrap">
-                Get Involved
-              </span>
-              <span aria-hidden className="absolute inset-0 flex items-center justify-center translate-y-[46px] transition-transform duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] group-hover:translate-y-0 whitespace-nowrap">
-                Get Involved
-              </span>
+              Donate
             </Link>
           </div>
 
@@ -313,12 +329,7 @@ export default function Navigation() {
                             onClick={(event) => {
                               setMobileGroup(null);
                               setMobileOpen(false);
-                              const section = child.href.split("#")[1];
-                              if (pathname === "/about" && section) {
-                                event.preventDefault();
-                                window.history.replaceState(null, "", child.href);
-                                scrollToAboutSection(section);
-                              }
+                              handleHashNav(event, child.href);
                             }}
                             className={`font-body text-[15px] py-2.5 transition-colors ${pathname === child.href ? "text-sky-blue" : "text-carbon-black hover:text-sky-blue"}`}
                           >
@@ -346,10 +357,14 @@ export default function Navigation() {
               })}
 
                  <Link
-                href="/become-a-volunteer"
-                className="mt-4 inline-flex items-center justify-center bg-sky-blue text-white font-body font-medium text-[16px] px-6 py-4 rounded-full hover:bg-light-blue transition-colors"
+                href={donateHref}
+                onClick={(event) => {
+                  setMobileOpen(false);
+                  handleHashNav(event, donateHref);
+                }}
+                className="mt-4 inline-flex items-center justify-center bg-[#E23D3D] text-white font-body font-medium text-[16px] px-6 py-4 rounded-full shadow-sm transition-[background-color,transform,box-shadow] duration-200 ease-out hover:bg-[#C93434] hover:-translate-y-0.5 hover:shadow-md active:scale-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E23D3D]/50 focus-visible:ring-offset-2"
               >
-                Get Involved
+                Donate
               </Link>
 
             </div>

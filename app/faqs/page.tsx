@@ -7,7 +7,7 @@ import { pageMetadata, faqPageJsonLd } from "@/lib/seo";
 export const metadata: Metadata = pageMetadata({
   title: "FAQs — Patient Safety & Volunteering Questions Answered",
   description:
-    "Answers to common questions about Patient Safety Alliance Tanzania — who we are, what we do, and how to get involved.",
+    "Answers to common questions about Patient Safety Alliance — who we are, what we do, and how to get involved.",
   path: "/faqs",
 });
 import PageHero from "@/components/sections/PageHero";
