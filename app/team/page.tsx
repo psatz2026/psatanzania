@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import VolunteerCard from "@/components/cards/VolunteerCard";
 import PageHero from "@/components/sections/PageHero";
-import OrgStructureChart from "@/components/sections/OrgStructureChart";
+/*import OrgStructureChart from "@/components/sections/OrgStructureChart";*/
 import JsonLd from "@/components/seo/JsonLd";
 import { pageMetadata } from "@/lib/seo";
 import { SITE_URL } from "@/lib/site";
@@ -39,7 +39,7 @@ export default function TeamPage() {
       <section className="py-[60px] lg:py-[100px]">
         <div className="max-w-[1460px] mx-auto px-5 sm:px-[30px] flex flex-col gap-16 lg:gap-20">
 
-          {/* Organizational Structure */}
+          {/* Organizational Structure 
           <div className="flex flex-col gap-8">
             <AnimateIn>
               <h2 className="font-heading text-[28px] lg:text-[34px] leading-[1.3] text-carbon-black text-center">
@@ -48,10 +48,10 @@ export default function TeamPage() {
             </AnimateIn>
             <AnimateIn delay={0.08}>
               <div className="rounded-2xl border border-sky-blue/15 bg-ice-blue/40 px-4 py-10 sm:px-8 sm:py-12 lg:px-12">
-                <OrgStructureChart />
+               <OrgStructureChart /> 
               </div>
             </AnimateIn>
-          </div>
+          </div> */}
 
           {/* Leadership */}
           <div id="leadership" className="flex flex-col gap-8 scroll-mt-[100px]">

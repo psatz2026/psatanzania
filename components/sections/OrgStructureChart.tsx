@@ -1,3 +1,4 @@
+/*
 function RoleCard({ label }: { label: string }) {
   return (
     <div className="relative z-10 min-w-[140px] sm:min-w-[160px] rounded-xl border border-sky-blue/20 bg-white px-5 py-3.5 sm:px-6 sm:py-4 text-center shadow-[0_2px_16px_rgba(27,56,136,0.07)]">
@@ -8,9 +9,11 @@ function RoleCard({ label }: { label: string }) {
   );
 }
 
+
 function VLine({ className = "" }: { className?: string }) {
   return <div aria-hidden className={`w-px shrink-0 bg-sky-blue/35 ${className}`} />;
 }
+
 
 export default function OrgStructureChart() {
   return (
@@ -19,11 +22,11 @@ export default function OrgStructureChart() {
       role="img"
       aria-label="Organizational structure: Chairperson at the top, Treasurer and General Secretary below, then three Members"
     >
-      {/* Level 1 */}
+      {/* Level 1 
       <RoleCard label="Chairperson" />
       <VLine className="h-7 sm:h-8" />
 
-      {/* Level 2 — Treasurer & General Secretary */}
+      {/* Level 2 — Treasurer & General Secretary 
       <div className="relative flex w-full max-w-[520px] justify-center gap-4 sm:gap-10 md:gap-16">
         <div
           aria-hidden
@@ -41,7 +44,7 @@ export default function OrgStructureChart() {
 
       <VLine className="h-7 sm:h-8" />
 
-      {/* Level 3 — Members: stacked on mobile, row on tablet+ */}
+      {/* Level 3 — Members: stacked on mobile, row on tablet+ 
       <div className="relative flex w-full max-w-[720px] flex-col items-center sm:flex-row sm:items-start sm:justify-center sm:gap-6 md:gap-8">
         <div
           aria-hidden
@@ -50,9 +53,9 @@ export default function OrgStructureChart() {
 
         {(["Member", "Member", "Member"] as const).map((label, i) => (
           <div key={i} className="flex flex-col items-center sm:flex-1">
-            {/* Desktop/tablet drop from horizontal bar */}
+            {/* Desktop/tablet drop from horizontal bar 
             <VLine className="hidden h-5 sm:block sm:h-6" />
-            {/* Mobile connector between stacked cards */}
+            {/* Mobile connector between stacked cards 
             {i > 0 && <VLine className="h-7 sm:hidden" />}
             <RoleCard label={label} />
           </div>
@@ -61,3 +64,4 @@ export default function OrgStructureChart() {
     </div>
   );
 }
+*/
