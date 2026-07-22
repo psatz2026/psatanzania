@@ -7,7 +7,7 @@ export const legalPages: LegalPage[] = [
     lastUpdated: "2026-01-01",
     content: `## Privacy Policy
 
-Patient Safety Alliance Tanzania ("PSA Tanzania", "we", "our") is committed to protecting your personal information. This policy explains how we collect, use, and safeguard your data.
+Patient Safety Alliance ("PSA", "we", "our") is committed to protecting your personal information. This policy explains how we collect, use, and safeguard your data.
 
 ### Information We Collect
 We collect information you provide directly, such as your name, email address, and any messages you send us through our contact form or volunteer application.
@@ -30,13 +30,13 @@ For privacy-related questions, contact us at: info@psatanzania.org`,
     lastUpdated: "2026-01-01",
     content: `## Terms of Use
 
-By accessing and using the PSA Tanzania website, you agree to the following terms.
+By accessing and using the PSA website, you agree to the following terms.
 
 ### Permitted Use
-This website is provided for informational purposes about PSA Tanzania's mission, programs, and activities. You may use it for personal, non-commercial purposes.
+This website is provided for informational purposes about PSA's mission, programs, and activities. You may use it for personal, non-commercial purposes.
 
 ### Intellectual Property
-All content on this website, including text, images, and graphics, is the property of PSA Tanzania and may not be reproduced without permission.
+All content on this website, including text, images, and graphics, is the property of PSA and may not be reproduced without permission.
 
 ### Disclaimers
 The content on this site is provided in good faith for general information. It does not constitute medical advice. For health-related decisions, please consult a qualified healthcare professional.
